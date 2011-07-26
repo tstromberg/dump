@@ -13,6 +13,12 @@ OUTPUT_VOLUME="10"
 # Should we mute our microphone in the hangout?
 MUTE_MICROPHONE=1
 
+# After this amount of time, start randomly clicking to prevent anti-idle
+IDLE_SECONDS=900
+
+# Turn off the display if we are idle?
+DISPLAY_POWER_SAVING=1
+
 # Does your Google+ profile show circle suggestions? Changes button location.
 HAS_CIRCLE_SUGGESTIONS=1
 
@@ -88,6 +94,13 @@ set_output_volume() {
   fi
 }
 
+power_off_display() {
+  # normally our mouse clicks break anti-idle. 
+  if [ $DISPLAY_POWER_SAVING -eq 1 ]; then
+    xset dpms force standby
+  fi
+}
+
 if [ ! -e "$VIDEO_DEVICE" ]; then
   echo "$VIDEO_DEVICE not found (is this Linux? does we have a webcam connected?"
   exit 3
@@ -95,6 +108,7 @@ fi
 
 set_output_volume
 start_time=`date +%s`
+restart_time=$start_time
 
 # make sure we have wireless
 while [ 1 ]; do
@@ -112,8 +126,10 @@ while [ 1 ]; do
     fi
     echo "Network down state: $failure"
     if [ $failure -eq 0 ]; then
-      echo "Restarting hangout."
-      take_screenshot
+      if [ $restart_time -ne $start_time ]; then
+        echo "Restarting hangout."
+        take_screenshot
+      fi
       kill_browser
       sleep 1
       start_browser
@@ -123,14 +139,18 @@ while [ 1 ]; do
       start_hangout
       sleep 10
       mute_mic_in_hangout
+      sleep 10
+      power_off_display
+      restart_time=`date +%s`
     else
       echo "Cannot access Google+"
     fi
   fi
   sleep 10
-  elapsed_seconds=$(expr `date +%s` - $start_time)
-  if [ $elapsed_seconds -gt 900 ]; then
+  elapsed_seconds=$(expr `date +%s` - $restart_time)
+  if [ $elapsed_seconds -gt $IDLE_SECONDS ]; then
     anti_idle_click
+    power_off_display
   fi
 done
 
