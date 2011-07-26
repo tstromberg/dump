@@ -14,7 +14,7 @@ OUTPUT_VOLUME="10"
 MUTE_MICROPHONE=1
 
 # After this amount of time, start randomly clicking to prevent anti-idle
-IDLE_SECONDS=900
+IDLE_SECONDS=1800
 
 # Turn off the display if we are idle?
 DISPLAY_POWER_SAVING=1
@@ -97,6 +97,7 @@ set_output_volume() {
 power_off_display() {
   # normally our mouse clicks break anti-idle. 
   if [ $DISPLAY_POWER_SAVING -eq 1 ]; then
+    echo "Putting display into standby mode."
     xset dpms force standby
   fi
 }
@@ -109,6 +110,7 @@ fi
 set_output_volume
 start_time=`date +%s`
 restart_time=$start_time
+idle_time=0
 
 # make sure we have wireless
 while [ 1 ]; do
@@ -142,15 +144,18 @@ while [ 1 ]; do
       sleep 10
       power_off_display
       restart_time=`date +%s`
+      idle_time=$restart_time
     else
       echo "Cannot access Google+"
     fi
   fi
-  sleep 10
+  sleep 5
   elapsed_seconds=$(expr `date +%s` - $restart_time)
   if [ $elapsed_seconds -gt $IDLE_SECONDS ]; then
+    print "Clicking to avoid idle detection."
     anti_idle_click
     power_off_display
+    idle_time=`date +%s`
   fi
 done
 
