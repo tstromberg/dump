@@ -1,0 +1,297 @@
+Q: What command removes device aliases created with devalias in OpenBoot?
+A: There is no such command, you'll need to reboot.
+W: undevalias
+W: unsetenv
+W: devalias -r
+
+Q: What OpenBoot command displays system information, including RAM, ethernet address, and processor information?
+W: printenv
+A: banner
+W: .printenv
+W: .banner
+
+Q: Which of the following commands sets an NVRAM variable that refers to a physical device?
+W: nvalias /pci@1f,3000/scsi@2,1/disk@1,0:f ext_cdrom
+W: setenv /pci@1f,3000/scsi@2,1/disk@1,0:f ext_cdrom
+W: setnvram /pci@1f,3000/scsi@2,1/disk@1,0:f ext_cdrom
+A: nvalias ext_cdrom /pci@1f,3000/scsi@2,1/disk@1,0:f 
+W: setenv ext_cdrom /pci@1f,3000/scsi@2,1/disk@1,0:f
+W: setnvram ext_cdrom /pci@1f,3000/scsi@2,1/disk@1,0:f
+
+Q: What OpenBoot variable must be set to true for the machine to automatically boot up?
+W: boot?
+W: startup-boot?
+A: auto-boot?
+W: auto?
+
+Q: What OpenBoot command creates a custom device alias?
+A: nvalias
+W: setenv devalias
+W: setenv nvalias
+W: nvramdev
+W: tmpdevalias
+
+Q: What file contains a list of filesystems to mount when the system enters multi-user mode?
+W: /etc/dfstab
+W: /kernel/mnttab
+A: /etc/vfstab
+W: /etc/mnttab
+
+Q: How do you install a recommended patch cluster?
+W: execute patchadd -u to uncompress the patch cluster file and install the patches
+A: uncompress the patch cluster file, and run ./install_cluster from the patch cluster directory
+W: execute ./install_cluster from the patch cluster directory
+W: uncompress the patch cluster file and execute patchadd
+
+Q: Which OpenBoot variable defines what the system boot devices are, and in what order to attempt to boot from them?
+W: boot-device?
+W: auto-boot?
+W: boot-device
+A: auto-boot
+
+Q: What print management tool allows you to configure network printers, manage clients and servers, uses name services, and provides a GUI?
+W: Solaris Print Manager
+A: Admintool
+W: LP Print Service
+W: lpadmin
+
+Q: You are logged in as root in the /opt/pkg directory. You have verified that SUNWcry is not installed, and you run "pkgadd SUNWcry". What is the result?
+W: There will be an error due to the missing -d option
+W: The package will be installed from the default directory listed in /etc/default/pkg
+A: The package will be installed from /var/spool/pkg if it exists
+W: The package will be installed from /opt/pkg if it exists
+
+Q: Which software group includes software that is needed for servers, but does not include drivers for additional hardware?
+W: Entire Solaris Software Group
+A: End User Solaris Software Group
+W: Entire Solaris Software Group Plus OEM Support
+W: Developer Solaris Software Group
+
+Q: Your keyboard and mouse suddenly stops working on your SPARC system, what is the most appropriate next step?
+A: Pressing Stop-A
+W: Pressing Enter ~ Ctrl-B
+W: Power cycling
+W: Pressing Ctrl Alt Del
+
+Q: What OpenBoot command lists all of the SCSI devices on the system?
+W: show-scsi-all
+A: probe-scsi-all
+W: info-scsi-all
+W: probe-all-scsi
+
+### next. 
+
+Q: Which command will create a new UFS file system on a 1000MB disk slice with 1% minimum free space and 8K per i-node.
+W: newfs -f 1 -i 8192 /dev/rdsk/c0t0d0s0
+W: newfs -m 1 -i 8 /dev/rdsk/c0t0d0s0
+A: newfs -m 1 -i 8192 /dev/rdsk/c0t0d0s0
+W: newfs -m 10 -i 8 /dev/rdsk/c0t0d0s0
+W: newfs -m 10 -i 8192 /dev/rdsk/c0t0d0s0
+W: newfs -f 1 -i 8 /dev/rdsk/c0t0d0s0
+
+Q: What naming conventions does Solaris 9 use to describe disk devices?
+W: physical, pseudo, block
+A: pseudo, block, hierarchial
+W: hierarchial, instance, logical
+W: logical, instance, pseudo
+W: pseudo, block, logical
+W: physical, logical, instance.
+
+
+Q: What is the smallest area of a local disk that can store information?
+W: cylinder
+A: sector
+W: inode
+W: track
+
+Q: Which filesystem uses the system's memory for reading and writing?
+A: tempfs
+W: cachefs
+W: lofs
+W: swapfs
+
+Q: Where are the subdirectories located for each printer's configuration and alert files?
+A: /etc/lp
+W: /var/spool/lp
+W: /var/lp
+W: /usr/lp
+
+Q: Which of the following commands will restore a complete filesystem, recreating it in the current directory exactly as it was backed up?
+W: restore -rf /dev/rmt/0
+A: ufsrestore -rf /dev/rmt/0
+W: fsrestore -rf /dev/rmt/0
+W: ufsdump -rf /dev/rmt/0
+
+Q: What utility in Solaris enables you to create and display disk slices on a SPARC?
+A: format
+W: fdisk
+W: mkfs
+W: newfs
+
+Q: What command would you use to remove the ext_cdrom NVRAM alias?
+A: unalias ext_cdrom
+W: aliasrm ext_cdrom
+W: nvalias -r ext_cdrom
+W: unsetenv ext_cdrom
+
+Q: What is the main distinction of fssnap when compared to ufsdump?
+W: fssnap is faster
+W: fssnap can use a disk drive
+W: backup files take up less space
+A: fssnap can be run on a mounted filesystem without risk to filesystem integrity.
+
+Q: Which of the following commands will perform a full backup of a disk to a tape?
+W: ufsdump 9f /dev/rdsk/c0t0d0s0 /dev/rmt/0
+W: ufsdump 0f /dev/rmt/0 /dev/rdsk/c0t0d0s0
+W: ufsdump 9f /dev/rmt/0 /dev/rdsk/c0t0d0s0 
+W: ufsdump 0f /dev/rdsk/c0t0d0s0 /dev/rmt/0
+
+Q: What command will determine the current state of the filesystems but not attempt to repair any?
+A: fsck -m
+W: fdisk -m
+W: fsck -l
+W: fdisk -l
+
+Q: What OpenBOOT command will show the system's boot PROM version and date?
+W: version
+W: banner
+A: .version
+W: .banner
+
+Q: Which of the following commands would setup a printer class named accounting, and add a printer named cpr01 to it?
+W: lpclass -c accounting -p cpr01
+W: lpadmin -p cpr01 -o class=accounting
+A: lpadmin -p cpr01 -c accounting
+W: lpclass -c accounting; lpadmin cpr01 -c accounting
+
+Q: What file in a users home directory can be used to specify a default printer for that user?
+W: .lpdest
+A: .printers
+W: printer.conf
+W: .printers.conf
+
+Q: How do you remove a patch that has been installed with patchadd -d?
+W: patchrm
+A: It cannot be removed
+W: delete the subdirectory from /var/sadm/patch and reboot
+W: patchdel
+
+Q: What file contains the default ren level a system will boot into?
+W: /etc/default/init
+A: /etc/inittab
+W: /etc/init.conf
+W: /etc/init.d/init.conf
+
+Q: printera has failed, printerb still works. There are still jobs in printera's queue. What is the most efficient way to rectify the problem?
+W: lpmove printerb printera
+A: lpmove lprintera printerb
+W: cancel printera; lpmove printerb printera
+W: cancel printera; lpmove printera printerb
+W: disable printera; lpmove printerb printera
+
+Q: What command will keep client print requests from queueing up on a print server?
+W: disable
+W: lpadmin stop
+W: lpadmin reject
+W: lpadmin disable
+A: reject
+
+Q: What can be determined from this shadow entry: atester:Wsxl5wOL.u3:12001:7:182::::
+W: User must wait at least 182 days from the last password change to change their password again.
+A: The user will be forced to change their password 182 days from the date of the last change. 
+W: The password is Wsxl5wOL.u3
+W: The account is locked
+W: The user must wait 7 days from the current date to change his or her password.
+
+Q: Which of these commands would generate a full listing of every process now running?
+W: ps -A
+W: ps -e
+W: ps -Ae
+A: ps -Af
+W: ps -f
+
+Q: What information can you tell me about this directory: drwxrwxr-xT 1 jdoe actg 352134 Nov 10 12:45 dept_payroll
+W: files can only be read by members of the actg group
+W: files can be modified by members of the actg group
+W: All members of the actg gorup can delete files in the dept_payroll directroy
+
+Q: Where does he LP print service queue print request files?
+W: /var/spool/print
+W: /var/print/spool
+A: /var/spool/lp
+W: /var/lp/spool
+
+Q: Within a Solaris 9 shell, what command would you use to set the default boot device to be local disk only?
+W: nvram auto-boot=disk
+W: eeprom auto-boot disk
+W: eeprom boot-device disk
+W: eeprom boot-device=disk
+W: nvram auto-boot disk
+W: nvram boot-device disk
+
+Q: What command in Solaris will display NVRAM parameters from within the shell?
+W: prom -l
+W: eeprom -l
+W: nvram -l
+W: prom
+A: eeprom
+W: nvram
+
+Q: Which backup schedule will perform a monthly full, followed by daily backups whereby only that day's changes are dumped (choose most appropriate):
+W: monthly 0, monday 5, tuesday 6, wednesday 7, thursday 8, friday 4
+W: monthly 9, monday 5, tuesday 6, wednesday 7, thursday 8, friday 0
+W: monthly 0, monday 5, tuesday 5, wednesday 5, thursday 5, friday 0
+W: monthly 9, monday 5, tuesday 5, wednesday 5, thursday 5, friday 0
+
+Q: How can you boot a SPARC based system and be able to enter an alternate kernel and or /etc/system file when prompted?
+W: boot -i from Solaris
+A: boot -a from OpenBoot
+W: boot -a from Solaris
+W: boot -i from OpenBoot
+
+Q: Which of the following is not true about this command: mount /dev/dsk/c0t0d0s5 /local
+W: the filesystem is most likely UFS
+W: large files are supported by the mounted filesystem
+A: If /local already contains files, the filesystem being mounted will overlay these files, rendering the previous files inaccessible.
+W: The filesystem is mounted read-write
+
+Q: When a file is created, the default file permissions assigned are controlled by a mask that can be defined by what command (fill in the blank, no need to input the full path of the command or file. However, include all the necessary command options and arguments ):
+A: umask
+
+Q: The GID number assigned to nobody is (fill in the blank): 
+W: 60001
+
+Q: On a Solaris system, which slice represents the entire disk?
+
+W: slice 4
+W: slice 1
+A: slice 2
+W: slice 0
+W: slice 3
+   
+Q: What command should you use to check the contents of a package with a name of SUNWxxx (fill in the blank, no need to input the full path of the command or file. However, include all the necessary command options and arguments ):
+A: pkgchk -c SUNWxxx
+
+Q:  At Run Level 3, what command or script can you use to start the standard system processes and brings the system up into the multiuser level (fill in the blank):
+A: /sbin/rc2
+
+Q: On your diskless client, kernel patches are logged in which directory (fill in the blank): 
+A: /var/sadm/patch
+
+Q:  When you use the smosservice patch to add patches to the patch spool directory and obsolete an existing patch in that spool, where is the obsolete patch moved to (fill in the blank): 
+A: /export/diskless/Patches/Archive
+
+Q: What is the user initialization file of the C shell for defining a user's environment at login (fill in the blank):
+$HOME/.login
+
+Q:  The default admin file used by Solaris 9 for adding patches is (fill in the blank):
+W:  /var/sadm/install/admin/default
+
+Q: How do you show information on UFS snapshots?
+A:  /usr/lib/fs/ufs/fssnap -i
+
+Q: Which tape device can fit the most data?
+W: /dev/rmt/oz
+W: /dev/rmt/01
+W: /dev/rmt0m
+A: /dev/rmt/0h

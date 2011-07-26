@@ -1,0 +1,826 @@
+# The following questions came from Sun's online test.
+
+Q: Which statements identify information which is displayed by the ifconfig -a command? (Choose three.)
+W: The system's host name.
+W: The system's canonical name.
+A: An interface's ethernet address.
+
+Q: Which statement about a client is true?
+W: It does not have it's own CPU.
+A: It uses services from another program.
+W: It keeps other operating systems running.
+W: It makes services available to other systems on the network.
+
+Q: Which statement is true about swap space?
+W: It is temporary storage for data after it is deleted.
+W: It is temporary storage for application code that is not running.
+A: It is a temporary storage for data while it is swapped out of memory.
+W: It is temporary storage for applications that do not need any memory.
+
+Q: Which file contains the system's crash dump generation configuration?
+W: /etc/crash.conf
+W: /etc/inetd.conf
+W: /etc/syslog.conf
+A: /etc/dumpadm.conf
+
+Q: What is the maximum capacity of the user's data in a RAID 5 volume?
+W: The sum of all the RAID 5 components.
+W: Exactly one half of the sum of all the RAID 5 components.
+A: The sum of all the RAID 5 components minus the parity component.
+W: Exactly one half of the sum of all the RAID 5 components minus the parity component.
+
+Q: Assuming that there are four Solaris Volume Manager state database replicas, which is the correct statement?
+W: Each replica holds one quarter of the state database.
+A: Each replica holds a complete copy of the state database.
+W: There is one primary and three copies of the state database.
+W: Each of the three copies is only updated if the primary has failed.
+
+Q: Which file is used to define Role-Based Access Control (RBAC) roles?
+A: /etc/user_attr
+W: /etc/security/auth_attr
+W: /etc/security/exec_attr
+W: /etc/security/policy.conf
+
+Q: Assuming that file1 is owned by user1 and group owned by group1, which command below would let user2 gain read, write, and execute privileges to file1?
+W: setfacl -m user2:rwx file1
+W: setfacl -s user2:rwx file1
+A: setfacl -m user:user2:rwx file1
+W: setfacl -s user:user2:rwx file1
+
+
+Q: Which are valid naming services that are supplied with the Solaris Operating Environment? (Choose two.)
+W: NIS, NFS
+A: NIS, DNS
+W: DNS, XDR
+W: NIS, XDR
+
+Q: Assuming that there are JumpStart clients on each subnet, which is a correct statement about boot server functionality in a JumpStart environment which uses the Reverse Address Resolution Protocol (RARP) protocol?
+
+A: A boot server is required on each subnet.
+W: Only a single boot server is required if each subnet has a DNS server.
+W: Only a single boot server is required if each subnet has a RARP relay server.
+W: Only a single boot server is required if each subnet has a BOOTP relay server.
+
+# The following questions came from the PrepLogic sample test
+Q: Which RAID level uses striping to spread data over disks, records parity, and will not lose data if a disk fails?
+W: 3
+A: 5
+W: 0
+W: 1
+
+Q: Which of the following ACL's replaces the ACL and gives the file owner rwx, group rx, others r, sets the mask to rx, and grants rwx to user jdoe?
+W: setfacl -a user:jdoe:rwx,group::r-x,other:r--,mask:r-x myfile
+A: setfacl user::rwx,group::r-x,other:r--,mask:r-x,user:jdoe:rwx myfile
+W: setfacl user:jdoe,rwx,,group:r-x,other:r--,mask:r-x myfile
+W: setfacl -s user:jdoe:rwx,group::r-x,other:r--,mask:r-x myfile
+W: setfacl -a user::rwx,group::r-x,other:r--,mask:r-x,user:jdoe:rwx myfile
+
+Q: Which of the following storage volume implementations, if implemented without additional features, provides the greatest performance benefit for both data read and write operations?
+W: RAID 0 (Concatenation)
+W: RAID 1
+W: RAID 5
+A: RAID 0 (Striping)
+
+Q: /etc/auto_master on a system has the following entry: "/production auto_prod -nosuid". There is a file /etc/auto_prod that contains the following entries: "planning   training9:/export/production/&", "accounting   training9:/export/financial/&", "design   training1:/export/engineering/&" 
+A: Assuming appropriate permissions, the user can cd into /production/design from any client on the network
+W: Assuming appropriate permissions, the user can cd into /export/financial/accounting from any client on the network
+W: Assuming appropriate permissions, the user can cd into /production/reports from any client on the network
+W: Users on training1 must cd into /export/engineering/design in order to get to the design directory, but users of other systems can get there using /production/design
+
+Q: Which of the following commands will display the ACL information for a file, to include the ACL and default ACL of the file?
+W: getfacl -l myfile
+A: getfacl myfile
+W: getfacl -a myfile
+W: getfacl -d myfile
+
+Q:  When the swap -l command has been entered: "95" shows under the free column. What does it represent?
+A: The number of 512b blocks that are unallocated
+W: The number of KB unallocated in swap
+W: The % of space remaining in swap
+W: The number of bytes unallocated within swap
+
+Q: What file is used to define the operating parameters of the NFS server logging daemon?
+W: /var/nfs/nfslog.conf
+W: /var/nfs/ is used for the logfiles, but does not contain the configuration
+A: /etc/default/nfslogd
+W: /etc/nfs/nfslog.conf
+W: /var/log/nfslog.conf
+R: /etc/nfs/nfslog.cof configures the logs, but not the operating parameters.
+
+Q: In Solaris Volume Manager, what is a group of physical slices that appear to the system as a single logical device referred to as?
+A: volume
+W: cluster
+W: metadevice
+W: plex
+R: They used to call them meta's
+
+Q: With an LDAP server up, what utility can be used to perform all the LDAP setup functions on a client?
+W: ldapconfig
+A: ldapclient
+W: ldapsetup
+W: ldapadd
+
+Q: When a system is at run level 3, what must be configured in order for nfsd to launch?
+W: /etc/nfs/nfs.conf must have the SERVER parameter set
+W: /etc/init.d/nfs.server must have nfsd and mountd uncommented
+A: There must be a valid entry in /etc/dfs/dfstab with the -F nfs option
+W: /etc/default/nfs must have the SERVER parameter set
+
+Q: Which of the following commands will list all of the files that have been shared by a specific host on the network (training9)?
+W: showmount training9
+W: showmount -s training9
+W: showmount -a training9
+A: showmount -e training9
+
+Q: Which command should be used to create a new role in an RBAC environment when SMC has not been initialized?
+A: roleadd
+W: smrole
+W: role -add
+W: smrole -add
+
+Q: What contains config and status information for all volumes, hot spares, and disk sets within Solaris Volume Manager?
+W: condition database
+A: state database
+W: metadevice database
+W: volume database
+
+Q: Which two steps need to be performed on the client in order to add it to DNS?
+A: Edit the host sentry in /etc/nsswitch.conf to include dns,  Create an /etc/resolv.conf file
+W: Edit the host sentry in /etc/nsswitch.dns to include dns,  Create an /etc/resolv.conf file
+W: Edit clients /etc/hosts file, Add a PTR record to the hosts.rev file
+W: Edit the host sentry in /etc/nsswitch.conf to include dns, Add a PTR record to the hosts.rev file
+
+Q: What file needs to be editued in order to build custom NIS maps?
+W: nsswitch.conf
+W: makedbm
+W: rules.ok
+A: Makefile
+
+Q: Where is the Makefile located that contains the commands to transform source files into NIS database files?
+W: /var/nis
+A: /var/yp
+W: /etc/default
+W: /etc
+W: /etc/nis
+
+Q: In RBAC, what is a unique string that represents a users's right to perform some operation or class of operations referred to as?
+W: Permission
+A: Authorization
+W: Role
+W: Rights profile
+
+Q: What file is used do define or tailor the configuration of NFS server logs?
+W: /var/nfs/nfslog.conf
+W: /etc/nfslog.conf
+W: /etc/default/nfslogd
+A: /etc/nfs/nfslog.conf
+W: /var/log/nfslog.conf
+
+Q: What file is used to control how a client machine or application gets network information?
+W: /etc/resolv.conf
+W: /etc/nscd.conf
+W: /etc/namessw.conf
+A: /etc/nsswitch.conf
+
+Q: What of the following commands will set the default group owner ACL's on a directory (actg)?
+A: setfacl -s d:u::rwx,d:g::r-x,d:o:r--,d:m:r--,user::rwx,group::r-x,other:r--,mask:r-x /export/actg
+W: setfacl d:u::rwx,d:g:r-x,d:o:r--,d:m:r--,user::rwx,group::r-x,other:r--,mask:r-x /export/actg
+W: setfacl user::rwx,group::r-x,other::r--,mask:r-x /export/actg
+W: setfacl -s user::rwx,group::r-x,other:r--,mask:r-x /export/actg
+
+Q: A user attempts to launch a program from /production/manufacturing which is automounted from training9. The server repotrs that he got an error "NFS server training9 not responding till trying" when he goes into the directory, but he can ping the host. What should he do?
+W: restart autofs on the client
+A: Use rpcinfo to verify the server's processes are active and responding
+W: Stop and restart the clients NFS services by using /etc/init.d/nfs.client 
+W: Stop and restart the server's NFS services by using /etc/init.d/nfs.client
+
+Q: What command is used to create a rights profile in RBAC?
+W: profadd
+W: smprof -add
+A: smprofile -add
+W: smprofile -a
+
+Q: Which of the following NIS daemons that is active on all clients and servers configured to use NIS?
+W: yppoll
+W: ypxfr
+W: ypinit
+A: ypbind
+
+Q: Which of the following commands would create a 256MB swapfile in the current directory?
+A: mkfile 256m myswap
+W: mkfile myswap 256
+W: mkfile myswap 256m
+W: mkfile 256 myswap
+W: mkfile 256mb myswap
+
+Q: Which of the following commands will list only the passwd file entry that corresponds to thee username joe?
+W: getpass joe
+A: getent passwd jdoe
+W: lookup passwd jdoe
+W: passwd -l joe
+
+Q: Which of the following will start the NFS server processes on a Solaris 9 system?
+W: /usr/bin/nfs.server start
+A: /etc/init.d/nfs.server start
+W: /usr/bin/nfs
+W: /usr/sbin/nfs
+
+Q: What needs to be done in order to enable tftp services?
+W: Add the entry to /etc/inetd.conf
+W: Uncomment the entry in /etc/inetd
+W: Add the entry to /etc/inetd
+A: Uncomment the entry in /etc/inetd.conf
+W: Add the entry to /etc/default/inetd
+W: Uncomment the entry in /etc/default/inetd
+
+Q: The master system that will be used to create the Flash archive has the basic cg6 frame buffer. The clones all use Elite 3D's, what options are available for the creation of a Flash archive on the master system?
+W: Upgrade the master system to an Elite 3D
+W: Select one of the clones to be a master
+W: Due to incompatibility between the master and the clones, a flash archive cannot be used
+A: Install any other software group on the master and install the specific graphics drivers for both the master and the clone systems.
+
+Q: What command provides a method to add one-line entries to the system logfile from the command line?
+W: Sendlog
+A: Logger
+W: Log
+W: Syslog
+
+Q: What is the difference between issuing ifconfig -a as root and as a normal user?
+W: Version of IP will only be shown to the root user
+W: The MTU size will only be shown to the root user
+A: The MAC address will only be shown to the root user
+W: Network mask and broadcast will only be shown to the root user.
+
+Q: Which RAID implementation requires the most drives/disk space?
+W: RAID 0 (Contcatenation) 
+W: RAID 0 (Striping)
+W: RAID 5
+A: RAID 1
+
+Q: Which of the following is a source facility used by /etc/syslog.conf to define error message logging?
+A: auth
+W: alert
+W: info
+W: none
+R: only auth is a facility
+
+Q: Clients fail to jump nearly as soon as it starts. In the jumpstart directory on the profile server, you see these two files: rules, u60.profile. How do you fix the issue?
+W: mv rules rules.ok
+A: Check script needs to be run to create rules.ok
+W: The rules file has the wrong permissions, group needs to write to the file
+W: The profile file needs to use a different filename. mv profile profile.u60
+
+Q: What is needed to perform a custom jumpstart on a standalone system?
+W: CDROM with Jumpstart directory
+W: /etc/bootparams set to identify the floppy as the source for the profile
+A: A floppy diskette with the appropriate files in a jumpstart directory
+W: A tape device from which the load image can be extracted and loaded
+
+Q: At a minimum, what permissions need to be set on the jumpstart directory?
+W: 744
+W: 777
+W: 555
+A: 755
+R: OWner needs write access? Lame.
+
+Q: Which of the following would make a swapfile available (myswap) that has been created in the /export/home directory using the mkfile command?
+W: swap -a /export/home/myswap
+A: cd /export/home && swap -a myswap
+W: cd /export/home && addswap myswap
+W: addswap /export/home/myswap
+W: cd /export/home && swapadd myswap
+W: swapadd /export/home/myswap
+
+Q: With RBAC implemented, what files are in /etc/security?
+W: Shadow
+W: prof_attr, user_attr, exec_attr
+W: user_attr, exec_attr, auth_attr
+A: exec_attr, auth_attr, prof_attr
+W: auth_attr, user_attr, prof_attr
+W: Shadow, Passwd, auth_attr
+
+Q: When creating a Jumpstart profile server, what directory must it have for certain jumpstart related files?
+W: /export/jumpstart
+W: /etc/install
+A: /jumpstart
+W: /etc/jumpstart
+
+Q: Which of the following commands will install a boot-only server?
+W: setup_boot_server
+W: setup_install_server
+W: boot_server_install
+W: install_boot_server
+A: setup_install_server -b
+
+Q: What does /etc/init.d/autofs stop do?
+A: Stops the automounter
+W: Disables filesystem check when you specify commands with no filesystem specified
+W: Disables automatic mounting of removable media filesystems such as pcfs or floppy disks
+W: Disables all automatic file server-based processes
+
+Q: What file can be edited to modify the logging of error messages from various system processes?
+W: /var/log/syslogd.conf 
+A: /etc/syslog.conf
+W: /etc/default/syslogd
+W: /var/log/syslog.conf
+
+Q: Which of the following daemons is not active on an NFS client?
+W: mountd
+W: Statd
+A: nfsd
+W: lockd
+
+Q: Which of the following is a special kind of shell used in RBAC that ienables access to the priveleged applications that are assigned to a given profile?
+W: Sh
+W: Psh
+W: Ssh
+A: Pfsh
+
+Q: Which of the following commands will display only the NIS master for the local machine
+W: ypwhich -m
+W: ypserver
+W: ypserver
+W: ypserver -m
+A: ypwhich
+
+Q: What is the function of a finish script when performing custom Jumpstart installations?
+W: Required, used to cleanup temp files and variables
+A: Optional, used to perform tasks after an install, but prior to rebooting
+W: Required, sets the root password and reboots the system
+W: Optional, cleans up temp files, variables
+
+Q: What command can be used to manage system crash dump information in Solaris 9?
+W: coreadm
+W: termadm
+A: dumpadm
+W: crashadm
+
+Q: What file contains the hostname for hme0?
+W: /etc/hosts
+W: /etc/hosts.hme0
+W: /etc/nodename.hme0
+A: /etc/hostname.hme0
+
+Q: What is a collection of machines that share a common set of NIS maps referred to as?
+A: domain
+W: cluster
+W: workgroup
+W: group
+
+Q: What file contains a list of servers that inetd invokes when requested?
+W: /etc/inetd
+A: /etc/inetd.conf
+W: /etc/default/inetd
+W: /etc/default/inetd.conf
+
+Q: What is the function of the master AutoFS map (typically /etc/auto_master?)
+W: It directs autofs to a reference-oriented file system
+W: It directs autofs to specific file systems
+A: It associates directories with maps
+W: It associates maps with servers
+
+Q: Which of the following commands is used to create an installation server?
+W: install_boot_server
+A: setup_install_server
+W: setup_boot_server
+W: boot_server_install
+W: setup_install_server -l
+
+Q: What does this doe: ifconfig hme0 192.168.1.109 netmask 255.255.255.0 broadcast 192.168.1.255
+A: Sets the IPv4 address of the interface
+W: Creates the logical interface
+W: Sets the IPv6 address for the interface
+W: The interface will be automatically marked as "up"
+
+Q: Which file can be edited to set the configuration values for nscd parameters, such as positive ttl, suggested-size, and check-files for each supported cache name?
+W: /etc/default/nss
+A: /etc/nscd.conf
+W: /etc/resolv.conf
+W: /etc/nsswitch.conf
+
+Q: training9 is the install and boot server, training5 is the profile server.What file on training9 needs to be added so that boot clients can reach the jumpstart directory on the profile server? *install_config=training9:/jumpstart
+W: services
+W: sysidcfg
+A: bootparams
+W: ethers
+
+Q: Which of the following commands is used to set up a NIS master server?
+W: ypserver
+A: ypinit -m
+W: ypserver -a
+W: ypinit -a
+W: ypadd -m
+W: ypinit -s
+ 
+Q: What is the focus of NIS?
+A: Make network administration easier through central control of network information
+W: Make communications easier by using hostnames instead of IP's
+W: Hierarchial namespace that resembles the UNIX Filesystem, more robust than previous systems
+W: To support different autonomous naming systems in a single Solaris operating environment.
+
+Q: What command is used to create a flash archive?
+W: Flarmake
+W: Flasharch
+W: Flashcreate
+A: Flarcreate
+W: Flar
+W: Flarchive
+
+Q: Which of the following commands is used to setup NIS clients?
+W: ypinit
+W: ypinit -a
+W: ypadd -c
+W: ypclient
+A: ypinit -c
+W: ypclient -a
+
+# Taken from http://www.globalitcert.com/demos/Sun_Demos/310-015.pdf
+
+Q: You have SVM installed on your system and you want to create your first metadevices. What initial action must you take?
+A: Run a command to create the first status database
+W: Run a utility to add the license to enable SVM
+W: Run a command to initialize the configuration metadevices
+W: Run the vxinstall utility 
+W: Create a soft partition using the -s initialize option with the appropriate command
+
+Q: How do you check to see if the LDAP client is configured and functional?
+A: ldaplist
+W: ldapclient -v
+W: ldapadd client
+W: ldapsearch client
+
+Q: What are the two daemons that run only on a NIS master?
+W: rpc.ypupdated, ypserv
+A: rpc.ypupdated, rpc.yppasswd
+W: rpc.yppasswd, ypserv 
+W: ypxfr_1perday, ypserv
+
+Q: Which command configures the interfaces specified in /etc/hostname.if0 files?
+W: s69inet
+W: s20sysetup
+W: s30sysid.net
+A: s30network.sh
+
+Q: In Jumpstart, which server provides an iumage of Solaris to the client?
+W: web server
+W: boot server
+A: install server
+W: configuration server
+
+Q: What two are required by flarcreate:
+A: files to include, file to create
+W: name to identify archive, file to create
+W: name of user creating archive, file to create
+W: systems to be installed using the archive, file to create
+
+Q: Which of the following can be used as a file server?
+W: AutoClient
+W: Diskless client
+W: Non-networked standalone system
+A: Networked standalone system
+
+# Chapter Questions from Exam Cram 2
+
+
+Q: How many layers are in the TCP/IP network model?
+W: 4
+A: 5
+W: 6
+W: D
+
+Q: Enter the name of the command usedto display network statistics
+A: netstat
+
+Q: Which option gives the ethernet address of a network interface?
+W: netstat -a
+A: netstat -p
+W: netstat -r
+W: netstat -e
+
+Q: Which of the following IP's are on a Class B?
+W: 120.56.117.3
+W: 192.186.13.4
+A: 191.255.255.47
+
+Q: Which of the following layers are located between the Transport and Application layers of the OSI network model?
+A: Session
+W: Data Link
+W: Network
+
+Q: Which of the following statements best describes RARP?
+W: The IP address is used to determine the Ethernet address
+A: The Ethernet address is used to determine the IP address.
+W: The IP address is used to determine the network mask.
+W: The IP address is used to determine the hardware address.
+W: The Ethernet address is used to determine the network mask.
+
+Q: What does coreadm -p do?
+W: Sets global core filename action
+W: Enables core file configuration
+W: Disables core file configuration
+A: Sets per-process core filename pattern.
+
+Q: What does coreadm -g do?
+A: Sets global core filename action
+W: Enables core file configuration
+W: Disables core file configuration
+W: Sets per-process core filename pattern.
+
+Q: What does coreadm -d do?
+W: Sets global core filename action
+W: Enables core file configuration
+A: Disables core file configuration
+W: Sets per-process core filename pattern.
+
+Q: What is the dumpadm command-line that displays the crash dump configuration?
+W: -d
+A: none
+W: -v
+W: -s
+
+Q: Which of the following are valid core file options (coreadm -e):
+W: global, process, setuid
+A: process, global, log
+W: setuid, process, global
+W: log, setuid, global
+W: global-setid, proc-setid, setuid
+
+Q: Which of the following keys can be used in the attribute field of the RBAC execution attributes database?
+W: auths, gid
+W: gid, help
+W: help, profiles
+W: profiles, uid
+W: auths, uid
+A: gid, uid
+
+Q: Which of the following describes the format of the RBAC user attributes database?
+A: name:qualifier:res1:res2:attributes
+W: name:res1:res2:desc:attributes
+W: name:res1:res2:short desc:long desc:attributes
+W: name:policy:type:res1:res2:ID:attributes
+R: B is the profile, C is the auth, D is the execution
+
+Q: Which of the following will remove group read permissions from file1:
+W: setfacl -s g::--- file1
+A: setfacl -m g::--- file1
+W: setfacl -d g::--- file1
+W: setfacl -c g::--- file1
+
+Q: Which of the following keywords are relevant m4 macro conditions in syslog.conf:
+W: ALERT
+A: LOGHOST
+W: HOSTNAME
+W: SYSLOG
+
+Q: Which of the following are source facilities for syslog:
+W: login, news
+W: news, local8
+W: local8, local7
+W: kern, login
+A: kern, news
+W: login, kern
+R: local only goes from 0 to 7
+
+Q: Which of the following are valid command-line arguments for the logger command?
+W: -x
+W: -l
+W: -L
+A: -t
+
+Q: Which of the following are valid uses for the asterisk in syslog.conf?
+W: represent all source facilities
+W: represent all severity levels
+W: represent all messages
+A: write a message to all logged-on users
+R: Very tricky.
+
+Q: What does the -f argument in logger specify?
+W: Alternative log file
+A: A file that contains the message
+W: A file that contains the tag associated with the message
+W: A file that contains the facility associated with the message
+
+Q: Which of the following are syslog severity levels?
+A: alert
+W: mail
+W: news
+W: user
+
+Q: What is the name of the default log file used for most syslog messages?
+A: /var/adm/messages
+
+Q: Which of the following syslog.conf entries will cause user alerts to be sent to loghost?
+A: user.alert ifdef('LOGHOST', /var/adm/alerts, @loghost)
+W: usr.alert ifdef('LOGHOST', /var/adm/alerts, @loghost)
+W: usr.alert ifdef('LOGHOST', @loghost, /var/adm/alerts)
+W: user.alrt ifdef('LOGHOST', @loghost, /var/adm/alerts.LOGHOST)
+
+Q: What RAID levels does SVM support?
+A: Concatanation, 0, 1, 5, 10
+W: Concatanation, 0, 1, 5
+W: 0, 1, 5, 10
+
+Q: Which of the following are types of virtual file systems? 
+A: Concatenated
+W: Aggregated
+W: Sliced
+W: Monolithic
+
+Q: Identify the prefix used with most of the commands associated with the SMV command line interface
+A: meta
+
+Q: Which of the following are features of a virtual disk management system?
+A: GUI admin tool, reliability, performance, overcome disk limitations
+W: reliability, performance, overcome disk limitations
+W: reliability, performance
+
+Q: The abbreviation for a multilevel system of techniques that is used to improve data reliability
+A: RAID
+
+Q: Which of the following is a name for a virtual file system that is composed of several partitions and in which the partitions are allocated and used one at a time?
+W: RAID 5
+W: Striped
+A: Concatenated
+W: Hot Spare
+
+Q: Enter the word used to describe the technique of writing data to both an online disk and an offline disk to provide a real-time replacement disk if needed.
+A: mirroring
+
+Q: Identify the pathname for virtual filesystems associated with SMV?
+W: /dev/dsk/c0d0s0
+W: /dev/svm/dsk/mktvol
+A: /dev/md/dsk/d0
+W: /dev/ds/dsk/d3
+W: /dev/svm/dsk/d3
+
+Q: What happens to a state database replicate that is part of a slice that is included in a volume?
+W: The replica is overwritten and no longer accessible
+W: The replica is automatically relocated to another slice
+A: The replica is skipped over and still accessible
+W: The replica is not overwritten but can no longer be used
+
+Q: Which configuration should be used to provide data availability at the lowest cost?
+W: RAID 0
+W: RAID 1
+A: RAID 5
+W: RAID 10
+
+Q: What is the name of the filesystem used to temporarily store a remote NFS resource on a local disk?
+A: CacheFS
+
+Q: Which of the following are types of AutoFS maps?
+W: direct, indirect, linked
+A: direct, indirect, auto_master
+W: direct, indirect, auto_home
+W: direct, auto_home, auto_master
+
+Q: Which of the following commands can be used to mount /export/home on solaris (192.168.39.7) to /mnt?
+W: mount -F nfs -h solaris /export/home /mnt
+A: mount -F nfs 192.168.39.7:/export/home /mnt
+W: mount -F nfs /mnt solaris:/export/home
+W: mount -F nfs /export/home@solaris /mnt
+
+Q: Which of the following situations require the automount command to be manually executed?
+W: addition to auto_master, addition to direct map, addition to indirect map
+W: deletion from auto_master, deletion from direct map, deletion from indirect map
+A: addition to auto_master, addition to direct map, deletion from auto_master, deletion from direct map
+W: addition to indirect map, deletion from indirect map
+W: addition to direct map, deletion from direct map
+
+Q: Which of the following commands is used to create a CacheFS configuration?
+W: cfsadm
+W: cachefsinit
+A: cfsadmin
+W: newcache
+W: cfscreate
+W: cfsadd
+
+Q: Which command is used to make NFS resources available for mounting?
+A: share
+
+Q: Which command stops cache logging
+A: cachefslog -h
+W: cachefslog -f
+W: cachefslog -d
+W: cachefslog -e
+
+Q: Which command starts cache logging
+W: cachefslog -h
+A: cachefslog -f
+W: cachefslog -d
+W: cachefslog -e
+
+Q: Which of the fololwing commands can be used to determine any mounted NFS resources?
+W: share, dfmounts
+A: dfmounts, mount
+W: share, nfsmounts
+W: mountall, share
+W: mount, nfsmounts
+
+Q: Identify the NFS-specific option to share to change the public file handle
+A: public
+
+Q: Which file contains one or more share commands used with the shareall command
+W: /etc/nfs/nfstab
+W: /etc/nfs/shares
+A: /etc/dfs/dfstab
+W: /etc/dfs/sharetab
+
+Q: The command cfsadmin -s xyz fails. What is the most probale reason?
+W: xyz is a mountpoint, not the name of a cache
+A: The demandconst option was not specified when mounting xyz
+W: Cache logging has not been started
+W: The size of the cache is too small.
+
+Q: Which of the following name services are not supported by Solaris?
+W: NIS+
+W: FNS
+W: /etc files
+W: DNS
+A: XDR
+
+Q: Which of the following is not a valid type of search status message?
+W: SUCCESS
+W: NOTFOUND
+A: TRYLATER
+W: UNAVAIL
+
+Q: What is the name of the BIND program used to provide DNS?
+A: in.named
+
+Q: What are the files called in NIS that store information?
+A: maps
+
+Q: Which of the following commands is used to propagate a new NIS map to a NIS slave?
+W: yppush
+W: ypupdate
+W: yppropagate
+A: ypxfr
+W: ypmaps
+
+
+Q: Which of the following is a reason to setup a boot server on a separate system than the install server?
+W: boot server cannot reside on an install server
+A: One or more install clients are not on the same subnet as the install server
+W: All install clients are not on the same subnet
+W: NIS or NIS+ cannot locate a boot server that resides on an install server
+
+Q: What is the name of the command used to add install client information to an install or boot server?
+A: add_install_client
+
+Q: What is the name of the command used to set up an install server?
+A: setup_install_server
+
+Q: Which of the following install methods can use over-the-network installation resources?
+A: Custom JumpStart, WebStart, JumpStart, Interactive Installation
+W: Custom JumpStart, WebStart, Interactive Installation
+W: Custom JumpStart, WebStart
+W: Custom JumpStart, WebStart, JumpStart
+
+Q: What is the name of the command used to add Solaris 9 to the install server?
+A: add_to_install
+
+Q: Which of the following files should be in a JumpStart configuration directory?
+A: profiles, rules, rules.ok
+W: profiles, check, rules, rules.ok
+W: profiles, check, rules
+W: check, rules.ok
+
+Q: What does the -c option do in add_install_client?
+W: Specify install server and path
+A: Specify profile server and JumpStart Configuration Directory path
+W: Specifies the DHCP client
+W: Specifies the server and path for the sysidcfg file
+
+Q: What does the -d option do in add_install_client?
+W: Specify install server and path
+W: Specify profile server and JumpStart Configuration Directory path
+W: Specifies the DHCP client
+A: Specifies the server and path for the sysidcfg file
+
+Q: What does the -p option do in add_install_client?
+W: Specify install server and path
+W: Specify profile server and JumpStart Configuration Directory path
+W: Specifies the DHCP client
+A: Specifies the server and path for the sysidcfg file
+
+Q: What does the -s option do in add_install_client?
+A: Specify install server and path
+W: Specify profile server and JumpStart Configuration Directory path
+W: Specifies the DHCP client
+W: Specifies the server and path for the sysidcfg file
+
+Q: What is the file used by a custom JumpStart installation to define how a system is installed?
+A: profile
+
+Q: What is the name of the file that contains boot parameters and is upated by add_install_client?
+A: /etc/bootparams
+
+Q: What flar command-line argument is used to split an archive?
+W: -S
+W: -b
+A: -s
+W: -x
+
+
+

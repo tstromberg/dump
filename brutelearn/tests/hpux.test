@@ -1,0 +1,1198 @@
+# start answers from HP-UX online sample test
+
+Q: On a system with a standard HPUX installation if the user is greeted with the ">" prompt they need to:
+W: immediately log-off.
+W: reboot the system.
+A: complete their current command line.
+W: reset their password.
+
+Q: A file may have more than one name. This is accomplished using which of the following commands?
+W: dup
+A: ln
+W: alias
+W: fork
+
+Q: The default shell used in HPUX 10.20 and above is the:
+W: Korn
+W: C-shell
+W: Bourne
+A: Posix
+
+Q: VAR=$(date) is an example of:
+W: variable substitution
+A: command substitution.
+W: tilde substitution.
+W: alias substitution.
+
+Q: By default, a command sends its output and error messages to :
+W: the top and bottom of the screen.
+A: file descriptors 1 and 2 respectively.
+W: the screen and the syslog file.
+W: the bit bucket unless otherwise specified by the user.
+
+Q: Local networks or LAN's are:
+W: restricted to connecting systems in the same building.
+W: rarely used by UNIX systems.
+W: only supported between devices from the same vendor.
+A: a standard in the modern computing enterprise.
+
+Q: Job control refers to the shell's ability to:
+W: serialize multiple tasks.
+W: adjust the priority of running jobs.
+A: move a job from the foreground to the background and vice-versa.
+W: repeat the same action over and over.
+
+Q: The end of an "if" branch is indicated by the keyword:
+W: end
+W: fin
+W: endif
+A: fi
+
+Q: The tar command is used for:
+W: printing the contents of a file.
+W: reformatting a file.
+A: making archive tapes.
+W: merging a file.
+
+Q: Which of the following commands might be used to find all the lines in myfile that contain the string "hpux"?
+W: find myfile -name hpux
+W: find myfile -string hpux
+W: search myfile hpux
+A: grep hpux myfile
+
+Q: The nice command allows a user to:
+W: send "friendly" E-mail messages to a group of users.
+W: asks the system to be "nice" to the user's processes and give them preference.
+W: broadcast a greeting to all users as they logon.
+A: suggest to the operating system that the process may be run at a weaker priority.*
+
+Q: What would the following file permissions mean? "rwxr-xr--"
+W: Read, write and execute permission for everyone.
+A: Read, write and execute permission for the file owner, read and execute permission for the group, and only read permission for all others.
+W: The file owner is the only one who can execute the file.
+W: People who do not own the file and are not in its group, can only run it.
+
+Q: If the device file for your CD-ROM is missing, (the "ioscan -fn" command shows the H/W path exists but there are no device files) what command could you run, without rebooting the system, to create the device files?
+W: mkcd -a
+A: insf -e
+W: lssf -e
+W: cdfs -a
+
+Q: You want to create a new 200MB logical volume from the volume group vg00, using the default physical extent size. Instead of taking the default logical volume name, you want to name your logical volume "newlv". What command would you use?
+W: newlv -l 200 -n newlv /dev/vg00
+A: lvcreate -L 200 -n newlv /dev/vg00
+W: lvcreate -l 200 -n newlv vg00
+W: mklv -L 200 -n newlv vg00
+
+Q: Which of the following statements is TRUE for HP-UX 11 and above?
+W: "/stand can be either hfs or vxfs if you have On-Line JFS.
+W: "/stand" must be vxfs but "/" can be vxfs or hfs.
+W: "/stand and "/" must be hfs
+A: "/stand" must be hfs but "/" can be vxfs.
+
+Q: The file that contains the default file system type for file system creation is:
+W: /etc/fstab
+W: /etc/filesystem
+A: /etc/default/fs
+W: /var/adm/sbtab
+
+Q: The ____________ command will show currently mounted file systems, the total size of each file system, the amount of space used from each file system, and the amount of space available in each file system.
+W: mount
+A: bdf
+W: du
+W: ll
+
+Q: Which of the following statements is FALSE?
+W: If cron.allow and cron.deny have entries cron.deny is ignored.
+W: If there is no cron.allow and a cron.deny exists with no entries everyone can use cron.
+W: If cron.allow is empty only the super user (root) can use cron.
+A: There must be a cron.deny or cron.allow file present on the system in order to use cron.
+
+Q: Your manager makes a request for you to create a script that will start a daemon at system boot. In what directory would you put this script and the corresponding configuration file for the script?
+A: /sbin/init.d , /etc/rc.config.d
+W: /sbin/rc , /etc/netconfig
+W: /sbin/startups, /etc/inittab
+W: /usr/sbin, /etc/rc.config.d
+
+Q: You are currently in the /stand/build directory building a new static kernel for an HP-UX 11.00 system. You have completed all the tasks to build the kernel. Which tasks, in which order, must be performed to make the new kernel the running kernel and also preserve the old kernel?    1): shutdown -ry 0   2): mv /stand/system /stand/system.prev; mv system /stand/system   3): kmupdate   4): mv /stand/vmunix /stand/vmunix.prev; mv vmunix_test /stand/vmunix
+W: step 3, step 1
+A: step 3, step 2, step 1
+W: step 3, step 4, step 1
+W: step 4, step 1
+
+Q: If a user forgets their password, how can root find out what it was?
+W: Look in /etc/passwd.
+A: Nobody can find out what a password was once it has been encrypted.
+W: Look in /secure/passwd.
+W: Use the passwd command.
+
+Q: A UID of zero indicates:
+A: a super user.
+W: a deactivated user.
+W: an invalid user.
+W: a restricted user.
+
+Q: The command lsdev is used to show block and character:
+W: minor numbers for all drivers configured into the kernel.
+W: major numbers for all drivers.
+A: major numbers for all drivers configured into the kernel.
+W: major numbers for all drivers currently in use by system peripherals.
+
+Q: When an update is made to a JFS file system mounted with the log option,:
+A: all the metadata updates are recorded in an intent log transaction record which is physically written to the intent log on the disk.
+W: some metadata changes are written to disk immediately and others will be written to disk when a sync is issued.
+W: all the metadata and data updates are recorded in a single intent log transaction record which is then flushed out to disk into the intent log.
+W: all the metadata changes are written only when a sync is issued.
+
+Q: The newfs command is used to create:
+W: HFS file systems only.
+W: CDFS file systems.
+W: a mirror copy of an existing file system.
+A: HFS and JFS file systems.
+
+Q: The program that runs automatically at the end of an install to establish the system date, hostname, and IP address is:
+A: /sbin/set_parms
+W: /etc/hosts
+W: /sbin/date
+W: /sbin/setboot
+
+Q: Besides the standard ioscan command, another command that could be used to identify which hardware address "goes with" which device file is:
+A: lssf
+W: listsf
+W: lsspecial
+W: displaysf
+
+Q: What command would you use to check the physical extent size that will be used when you create logical volumes from the volume group "vgmyvol"?
+W: vgshow /dev/vgmyvol
+W: pvdisplay /dev/vgmyvol
+W: lvdisplay /dev/vgmyvol
+A: vgdisplay /dev/vgmyvol
+
+Q: Which of the following statements is TRUE?
+W: Mounting a file system on a directory will erase all files in that directory.
+A: When creating a file system of type "hfs", an entry will be placed in /var/adm/sbtab.
+W: The "unmount" command will unmount a file system from a mount point.
+W: The /etc/fstab file is no longer used in HP-UX 11.0.
+
+Q: You do not want the cron daemon to start at system boot. What action should you take?
+W: Run the "unset cron" command.
+W: Change the value of the CRON variable in /sbin/init.d/cron from 1 to 0.
+A: Change the value of the CRON variable in /etc/rc.config.d/cron from 1 to 0.
+W: Remove the /usr/sbin/cron executable.
+
+Q: Which protocol maps IP addresses of remote nodes to their corresponding MAC addresses?
+W: IP
+A: ARP
+W: TCP
+W: ICMP
+
+Q: Which type of access method is used by Ethernet and IEEE 802.3 networks?
+W: Fiber Distributed Data Interface (FDDI)
+W: Demand Priority Protocol (100VG-AnyLAN)
+A: Carrier-Sense, Multiple-Access with Collision Detection (CSMA/CD)
+W: Dynamic Host Configuration Protocol (DHCP)
+
+Q: The ________________ command can be used to view the routing table on a system.
+W: route
+W: netroute
+A: netstat
+W: nfsstat
+
+Q: The default "netmask" for a class B network is:
+W: 127.0.0.1
+W: 255.0.0.0
+W: 0.255.255.255
+A: 255.255.0.0
+
+Q: Using NFS, a server ___________ and a client __________ file systems and/or directories.
+W: exports; imports
+W: mounts; imports
+W: writes; receives
+A: exports; mounts
+
+Q: Which of the following is NOT an NIS command?
+W: ypinit
+W: ypmatch
+A: yphost
+W: ypmake
+
+Q: Which of the following daemons only runs on a NIS master server?
+W: ypserv
+W: ypinit
+A: rpc.yppasswd
+W: ypxfrd
+
+Q: Three mechanisms available for converting hostname's to their corresponding IP addresses are:
+W: NFS, UDP, and DNS
+W: TCP, NIS, and telnet
+A: DNS, NIS, and /etc/hosts
+W: NIS, NFS, and ICMP
+
+Q: The file /var/adm/inetd.sec is used to:
+W: provide an extra layer of security for HP-UX systems.
+W: specify extra security for anonymous FTP users.
+W: control access to the internet daemons database.
+A: further control access to some internet daemon services.
+
+Q: Which of the following can NOT be determined from the netstat command?
+A: state of IP-Forwarding
+W: network interface status
+W: active socket connections
+W: route table entries
+
+Q: Which of the following commands will reconfigure the DNS nameserver daemon (named)?
+W: /sbin/init.d/named reconfig
+A: sig_named restart
+W: dns -q
+W: named restart
+
+Q: The maximum cable length of each 10BaseT segment is:
+W: 10 meters
+W: 20 meters
+A: 100 meters
+W: 200 meters
+
+Q: Which of the following commands would allow you to determine the MAC (ethernet) address of the local system's NIC's.
+W: swlist
+W: ioscan
+A: lanscan
+W: ifconfig
+
+Q: If you are unable to linkloop a critical server on your local area network, what can you conclude?
+W: Your routing tables are misconfigured.
+W: Your netmask is misconfigured.
+W: The server's linkloopd daemon died.
+A: Your LAN card has lost physical connectivity to the server.
+
+Q: At which run level would NFS file systems be exported (on a default HPUX installation)?
+W: one
+W: two
+A: three
+W: four
+
+Q: The "automounter" or AutoFS services can be used to:
+W: perform automatic load balancing among alternate NFS servers.
+A: automatically mount and unmount NFS mount points on demand.
+W: automatically mount CDs on the local host.
+W: automatically increase file system swap.
+
+Q: When configuring a host as a secondary or slave DNS name server, which of the following steps is NOT required on the host?
+W: Modify the /etc/rc.config.d/namesvrs file.
+A: Run the hosts_to_named command.
+W: Copy a boot configuration file from the primary or master DNS server host.
+W: Copy db.* files from the primary or master DNS server.
+
+Q: In DNS, how many server addresses may be configured through the /etc/resolv.conf file ?
+W: 2
+W: 4
+W: 5
+A: 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# start answers from book ##########################################################
+
+Q: The system startup file for a UNIX shell is invoked:
+W: when the system boots up
+W: whenever a user issues a new command
+A: when a user logs into the system
+W: any time a user starts a subshell
+
+Q: The default POSIX shell prompt for a common user is:
+W: #
+W: %
+A: $
+W: The current directory name followed by #
+
+Q: What is the difference between intrinsic and extrinsic UNIX commands?
+A: Intrinsic commands are built into the shell, while extrinsic commands are separate programs.
+W: Extrinsic commands are built into the shell, while intrinsic commands are separate programs.
+W: The superuser runs extrinsic commands, while any user can run intrinsic commands.
+W: A user logged into the console runs intrinsic commands, while a user logged in from other terminals runs extrinsic commands.
+
+Q: To log out of the HP-UX session, you use command:
+W: logout
+A: exit
+W: logout or exit
+W: quit
+N: There is no logout command.
+
+Q: What is not true about the PATH variable?
+A: It shows the path of the current directory.
+W: It shows the names of directories that are checked when searching for a command.
+W: It is usually set in the /etc/profile by the system administrator.
+W: The value of the PATH variable can be changed by a user.
+
+Q: You have a variable named ABC with the value of alphabets. What does ABC become if you set ABC='All $ABC'
+A: All $ABC
+W: All Alphabets
+W: All ABC
+W: The variable value cannot be changed with this command. It remains "Alphabets"
+
+Q: What is wrong with the shell variable name 3Xyab2
+A: It is not legal because variables must only contain uppercase variables.
+W: It is not legal because variables can only have uppercase or lowercase letters, not a combination.
+W: It starts with a digit, so it is not a legal name.
+W: It ends with a digit, so it is not a legal name.
+N: Shell variables have to be in all capitals.
+
+Q: What is the file descriptor used for stderr
+W: 1
+W: 0
+A: 2
+W: 3
+
+Q: When you redirect both stdout and stderr to the same location, the syntax is:
+W: 2&>
+W: 2&>1
+A: 2>&1
+W: 1>&2
+
+Q: Which is not true?
+W: Pipes can be used with redirection symbols
+A: Pipes cannot be used when stdin redirection is used in a command.
+W: It is possible to redirect all stdin, stdout, and stderr at the same time
+W: The tee command sends output of a command to two locations.
+
+Q: You have made changes to a file and want to quit vi without saving the changes. What command do you use?
+W: :wq
+W: :q
+A: :q!
+W: :w!
+
+Q: You want to replace cat with dog in your file at all locations in vi, you use:
+W: /s/cat/dog
+W: :s/cat/dog/
+A: :s/cat/dog/g
+W: :s/dog/cat/g
+
+Q: In vi's command mode, you press "a", what happens:
+W: this is an invalid command
+A: The editor goes into insert mode and starts inserting text after the current cursor location.
+W: The editor searches for character "a" in the open file
+W: The editor gives a beep sound.
+
+Q: A regular expression \<join matches:
+A: all words starting with join
+W: all words ending with join
+W: all words starting or ending with join
+W: none of the other answers.
+
+Q: Which one of these is NOT a meta character in regular expressions?
+W: *
+W: \
+W: $
+A: -
+
+Q: The HP-UX file system hierarchy is based on:
+W: BSD
+A: AT&T SVR4
+W: a logical arrangement of files and directories, not based on BSD or AT&T SVR4
+W: A random distribution of files and directories
+
+Q: Mail files are kept in which directory:
+W: /mail
+W: /var/spool/mail
+W: /home/mail
+A: /var/mail
+
+Q: To find a command in the search path, we use the command:
+W: whatis
+A: which
+W: whois
+W: find
+
+Q: The HP-UX kernel is located in:
+W: /kernel
+W: /var/kernel
+W: /usr
+A: /stand
+
+Q: You are using POSIX shell, and are in a directory with 3 files: file1, file2, and afile. You type the command "ls f", and then press Esc-=. What happens?
+W: The shell completes the command.
+W: The typed command is erased.
+W: You get a list of files in the directory.
+A: You get a list of files in the directory starting with f.
+
+Q: Using POSIX shell, You use the date command. Just after that, you press Esc-J, what happens?
+W: The previous command is displayed on the command prompt.
+W: The date command is executed.
+W: The current shell is suspended.
+A: Nothing.
+N: j goes to the next command in your history.
+
+Q: In POSIX shell, what does the command "r 3" do?
+W: It reads 3 lines of user input then displays them on the screen.
+W: It repeats the last 3 commands
+W: It returns 3 steps back in the command history.
+A: It executes command #3 in the command history.
+
+Q: What does the echo "\A" command do?
+W: It prints the character a
+W: It prints the character \a.
+W: It prints the hexadecimal character "a" that represents decimal 10
+A: It gives a beep sound.
+
+Q: SAM cannot be used for:
+W: HP-UX routine system administration
+A: HP-UX troubleshooting
+W: HP-UX network administration
+W: HP-UX kernel reconfiguration.
+
+Q: The SAM builder is used to:
+W: compile SAM files
+W: build the SAM database
+A: grant restricted access to non-root users
+W: build SAM menus and icons
+
+Q: The SAM log file is:
+W: /var/adm/samlog
+W: /var/sam/log
+A: /var/sam/samlog
+
+Q: The utility for viewing the SAM log file is:
+A: samlog_viewer
+W: log_viewer
+W: viewlog_sam
+W: view_samlog
+
+Q: What's the maximum hostname length in HP-UX?
+W: 8
+W: 15
+W: 16
+A: 64
+N: In practice, 8 is the real limit.
+
+
+Q: The HP-UX hostname may only contain:
+W: Letters only
+W: Letters and numbers only
+A: Letters, numbers, dash, and underscore
+W: Letters , numbers, dash, underscore, and dot characters
+
+Q: How can you change the primary boot path?
+A: the PDC
+W: the mkboot command
+W: with the help of ISL
+W: use the set_parms command
+
+Q: If search reports your CD-ROM as P6 10/4/4.2, how can you boot off of it?
+W: Boot P6
+W: Boot 10/4/4.2
+W: BO 10/4/4.2
+A: All of the answers are right
+
+
+Q: All HP-9000 systems have processor dependent code (PDC). What is true about it?
+W: It is used to add processors that are dependent on each other.
+W: PDC on all HP systems is the same.
+W: It is a programming language for HP processors.
+A: It is used to initialize and boot HP systems.
+
+Q: The autoboot information is stored in:
+W: The AUTO file in the LIF area
+W: the ISL
+W: PDC
+A: stable storage
+
+Q: What can be used to boot HP-UX into single user mode
+W: PDC
+W: the hpux utility when properly called from the ISL
+A: both of the above
+W: none of the above
+
+Q: What is the function of the secondary loader
+W: It loads the HP-UX kernel if the primary loader fails.
+A: It is the utility that loads the HP-UX kernel during boot time
+W: It loads the ISL in the second phase of the boot process
+W: It is a config file for the kernel
+
+Q: The boot area of the primary system disk contains
+W: LIF
+W: the hpux utility
+W: the AUTO file
+A: all of the above
+
+Q: The search command in the PDC is used to:
+W: search primary boot disks
+A: search all boot devices
+W: search all network interfaces
+W: search lost console devices
+
+Q: What is the order of execution of scripts bcheckrc, ioinitrc, and rc?
+W: bcheckrc, ioinitrc, rc
+A: ioinitrc, bcheckrc ,rc
+W: rc, ioinitrc ,bcheckrc
+W: rc, bcheckrc, ioinitrc
+
+Q: What information is present in stable storage?
+W: primary boot path
+W: alternate boot path
+W: information if autoboot is enabled or disabled
+A: all of the other answers.
+
+Q: What is true about the lifls command?
+A: It's an HP-UX command that lists files in the LIF area
+W: It is a LIF command to list files in the LIF area
+W: It is a PDC command to list files in the LIF area
+W: It is a LIF command used to list files in an HP-UX partition.
+
+Q: The ID field in /etc/inittab shows:
+W: the processor ID
+W: the process ID for the program in the action area
+A: an arbitrary string to represent an entry in the file
+W: runlevel in which the process is started.
+
+Q: What happens if the runlevel for a command is not specified in the /etc/inittab file?
+W: the program is never started
+A: the program is started in all runlevels
+W: The program is started at the boot time
+W: The program is started only in runlevel 0.
+
+Q: What runlevel can be used for multiuser operation?
+W: 0
+W: 1
+W: s
+A: 3
+
+Q: What command is used to check the current runlevel?
+W: runlevel
+A: who -r
+W: showrun
+W: init
+
+Q: What is not true about a fileset?
+W: A fileset is a collection of files
+W: One fileset can belong to only one product
+A: One fileset can belong to many products
+W: Filesets may have dependencies with each other.
+
+Q: What is the default location of software on your disk?
+A: /var/spool/sw
+W: /etc/default/sw
+W: /var/sd-ux/sw
+W: none of these answers.
+
+Q: When the swlist command is used without arguments, it lists:
+W: all bundles
+W: all products
+W: all bundles and all products
+A: All bundles and only those products that are not included in a bundle.
+
+Q: In which runlevel is the SD-UX software daemon started?
+W: 1
+A: 2
+W: 3
+W: 4
+
+Q: What is the use of the freedisk command?
+W: check the amount of free space on a disk.
+A: to check for unused software on a disk
+W: to check a disk that is completely free
+W: to wipe out all software from a disk to make it free.
+
+Q: For what purposes are patches not used?
+W: add new functionality
+W: fix bugs in applications
+A: fix bugs in hardware
+W: add support for new hardware.
+
+Q: Every patch is a .shar file on the HP-UX site. How many files are created from this .shar?
+A: 2
+W: 3
+W: 7
+W: 10
+
+Q: What does the sysdef command show?
+W: The system definition
+A: kernel tunable parameters
+W: kernel subsystems
+W: device drivers configured into the kernel.
+
+Q: The maxswapchunks kernel parameter shows the value of maximum swap space:
+A: that can exist on the system
+W: used by each user
+W: per disk
+W: that can be used by a single application
+
+Q: What is the usual or default target address of a SCSI controller card
+W: 0
+W: 1
+A: 7
+W: it may be assigned any address
+
+Q: What is the interface card instance number of disk 8/6.5.0
+W: 8
+A: 6
+W: 5
+W: 0
+
+Q: What is the device file name for disk 7/3.4.0 attached to a card having an instance number 1
+W: /dev/dsk/c1t3d4
+A: /dev/dsk/c1t4d0
+W: /dev/disk/c1t3d0
+W: /dev/c3t4d0
+
+Q: Which command cannot be used for creating a device file?
+W: insf
+A: lssf
+W: mksf
+W: mknod
+
+Q: The device class "disk" includes
+W: disk drives only
+A: disk drives and CD-ROM
+W: disk drives and tape drives
+W: disk drives, tape drives, and CD-ROW
+
+Q: A terminal is represented by how many files in the /dev directory
+A: 1
+W: 2
+W: 3
+W: None of the others
+
+Q: Which command is executed automatically for new devices at boot time?
+W: mksf
+W: lssf
+A: insf
+W: mknod
+
+Q: What is the name used for the root volume group?
+A: vg00
+W: root
+W: rootvg
+W: vgroot
+
+Q: Which statement is not true?
+W: Each logical volume has a character and block device
+W: The major device number for all logical volume devices is 64.
+W: The minor device number of all logical volume devices shows the logical volume number.
+A: Names of logical volume device files always start with lvol followed by a number.
+
+Q: The default physical extent size is:
+A: 4MB
+W: 8MB
+W: 4KB
+W: 8KB
+
+Q: The pvdisplay command uses:
+A: a block device file as an argument
+W: a raw device file as it's argument
+W: either a block or a raw device file as it's argument.
+W: a logical volume device file as it's argument.
+
+Q: By default, how many logical volumes can be created in a volume group?
+W: 16
+W: 127
+A: 255
+W: 1023
+
+Q: Which command can be used to create a physical volume?
+A: pvcreate /dev/rdsk/c2t5d0
+W: pvcreate /dev/dsk/c2t5d0
+W: pvcreate /dev/vg00/c2t5d0
+W: pvcreate /dev/vg00/lvol3
+
+Q:  Which statement is true?
+W: An HFS file system block size can be changed at any time.
+W: The minimum amount of data read at one time is equal to an HFS fragment.
+A: The minimum amount of data allocated to a file is equal to an HFS fragment.
+W: An HFS segment contains one or more HFS blocks.
+
+Q: What is not true about the JFS file system?
+W: it is an extent-based filesystem
+W: the default size of each block is 1KB
+A: Base JFS filesystems can be resized without unmounting
+W: It can create new inodes automatically.
+
+Q: What is the default packet size for ping?
+W: 16
+W: 32
+A: 64
+W: 128
+
+Q: When you create a file in HP-UX without a umask, what file permissions will be applied to it by default?
+A: -rwxrwxrwx
+W: -rwx------
+W: -rwxr-xr-x
+W: -rwxrwxr-x
+
+
+# chapter 19
+
+Q: To change a group ID temporarily, which command is used?
+W: chgrp
+A: newgrp
+W: tmpgrp
+W: chgrp or newgrp
+
+Q: What information is a must when you use the useradd command?
+A: the login name
+W: the login name and home directory
+W: the login name and userid
+W: the login name, group id, and userid
+
+Q: How many fields are in /etc/passwd
+W: 5
+W: 6
+A: 7
+W: 10
+
+Q: What directory contains the default configuration files for a user?
+W: /etc/default
+A: /etc/skel
+W: /etc/skeleton
+W: /usr/default
+
+Q: What command would you use to change a user id?
+W: id
+W: chmod
+A: usermod
+W: The ID of a user cannot be changed.
+
+Q: For what purpose is a restricted shell used?
+W: to stop a user from changing a directory
+W: to stop a user from setting the env variables SHELL, PATH, and ENV
+W: to disable I/O redirection for the user
+A: all of the other choices are correct.
+
+Q: Which kernel tunable determines the max size of a process table?
+W: maxssiz
+A: nproc
+W: maxuprc
+W: maxusers
+
+Q: Which signal is sent by the kill command by default?
+W: SIGHUP
+W: SIGKILL
+A: SIGTERM
+W: SIGNULL
+
+Q: The default nice level is 20, if you start a backgrounded process, what is it's nice level?
+W: 20
+W: 25
+A: 24
+W: 16
+N: The nice level is increased by 4 for background processes.
+
+Q: How are local print jobs scheduled?
+W: using the kernel process scheduling mechanism
+A: using the LP scheduling daemon lpsched
+W: using the LP daemon rlpdaemon
+W: using the lpadmin command
+
+Q: How can the print priority of a job be increased when the job is waiting in the queue?
+W: using lpadmin
+A: using lpalt
+W: using the lp command with the -p option
+W: You cannot change the priority of an already submitted job.
+
+Q: What is the result of the command: disable -r "Printer disabled" laserjet3
+W: No print job can be submitted to printer laserjet3
+A: No print job can be printed to printer laserjet3
+W: When a user sends a print job, a message "Printer disabled" appears on their terminal screen
+W: Printer laserjet3 disables any error messages.
+
+Q: What is the result of the following command: lpfence laserjet3 5
+A: Jobs of priorities less than 5 are not printed to laserjet3.
+W: Jobs of priorities less than 5 cannot be submitted to printer laserjet3.
+W: Any queued job having a priority of less than 5 is deleted from the queue.
+W: All of the other answers are correct.
+
+Q: Which swap area must be available at system bootup time?
+A: primary swap
+W: file system swap
+W: disk swap
+W: secondary swap
+
+Q: Where can you create a device swap
+W: a logical volume
+W: a whole disk used entirely for swap area
+W: free area at the end of a disk used in the whole-disk approach
+A: all of the above
+
+Q: You have 3 identical disks and plan to put swap and filesystems on them. How would you get the most performance?
+W: filesystems on two disks and device swap on the 3rd
+A: create device swap on all 3 disks and assign them the same priority.
+W: create device swap areas on all 3 disks and assign them different priorities
+W: Use filesystem swap with the same priority on all 3 disks.
+
+Q: You have 3 different swap areas in LVM: /dev/vg03/lvol2 /dev/vg03/lvol8 /dev/vg03/lvol9. You want to stop using lvol2, what do you do?
+W: run swapoff /dev/vg03/lvol2
+W: use swapon -d /dev/vg03/lvol2
+A: remove /dev/vg03/lvol2 from /etc/fstab and reboot
+W: Create a new filesystem on this swap area using newfs
+
+Q: What information is not displayed by swapinfo by default?
+W: type of swap area
+W: total physical memory installed
+W: percentage of swap used
+A: percentage of swap free
+
+Q: You are using incremental backups, levels 1 and 5. In order to restore the data, you must restore:
+A: first level 1 and then level 5
+W: first level 5 and then level 1
+W: The order does not matter
+W: You need a level 0 backup in addition to 1 and 5 in order to complete the restore.
+
+Q: In order to backup files larger than 2GB, you must use:
+A: fbackup
+W: tar
+W: cpio
+W: dump
+
+Q: Which backup is always a full backup, no matter what the previous backups were
+A: level 0
+W: level 1
+W: level 9
+W: a backup with the level=full command-line option
+
+Q: Which statement is true
+W: SAM can only be used to create full backups
+A: SAM can be used to create both full and incremental backups
+W: A time schedule for backups cannot be specified in SAM
+W: It is not possible to use SAM for interactive backup and restore
+
+Q: What information is present in Backup Scope when using SAM?
+W: The time of the backup
+A: The directories included in the backup
+W: The device on which the data will be backed up
+W: All of the other answers are correct.
+
+Q: At what run level is cron started?
+W: 1
+A: 2
+W: S
+W: 4
+
+Q: On your system, cron.allow is empty, but cron.deny exists and contains the user "boota". Who can use cron?
+W: all users
+W: all users except boota
+A: only root
+W: nobody can use cron.
+
+
+##### PART 3!
+Q: The order of the top four OSI layers from top to bottom is:
+W: transport, presentation, application, session
+A: application, presentation, session, transport
+W: application, session, presentation, transport
+W: presentation, session, transport, application
+
+Q: What is the function of the network layer in the OSI model?
+A: host addressing and routing
+W: starting a communication session
+W: end-to-end error detection
+W: end-to-end error correction
+
+Q: Which OSI layer is divided into the Logical Link Control (LLC) and Medium Access Control (MAC)
+W: the network layer
+W: the transport layer
+W: the physical layer
+A: the data link layer
+
+Q: A host on an IP network has an IP address of 192.168.3.65 with a netmask 255.255.255.224. What is the broadcast address?
+W: 192.168.3.255
+W: 192.168.3.128
+A: 192.168.3.95
+W: 192.168.3.64
+
+Q: Which statement is true with reference to an IP address and a socket address?
+W: The IP address is longer than the socket address.
+A: The socket address is longer than the IP address
+W: The IP address is used in the transport layer
+W: The socket address is used in the network layer
+
+Q: Which command is used to list network drivers configured into the kernel?
+W: lanscan
+A: ioscan
+W: lanadmin
+W: lsdev
+
+Q: What is /etc/rc.config.d/netconf used for?
+W: It is used to configure network adapters
+A: It's a text file that contains config info for network interfaces
+W: It contains hardware addresses assigned to network interfaces
+W: It contains dynamic routing information
+
+Q:  Which command is used for listing installed network adapters?
+W: lanscan
+W: ioscan
+A: both of the above
+W: none of the above
+
+Q: What is the server process for the rcp command?
+A: remshd
+W: rcpd
+W: inetd
+W: in.rcpd
+
+Q: Which command is used to execute a program on a remote system?
+W: rsh
+A: remsh
+W: rksh
+W: remexec
+
+Q: You want a user "jeff" at host "myhp" to be able to rlogin to your account. What should the ~/.rhosts file look like?
+W: jeff@myhp
+W: jeff myhp
+A: myhp jeff
+W: - jeff
+
+Q: You have hp01 resolve to 192.168.2.1 and 192.168.4.5 in your /etc/hosts. From what IP will the packets be seen from if you use the ping command?
+A: 192.168.2.1
+W: 192.168.4.5
+W: Alternate packets will be sent to each host starting with 192.168.2.1
+W: Alternate packets will be sent to each host starting with 192.168.4.5
+
+Q: At which run level is named started?
+W: 3
+A: 2
+W: s
+W: 4
+
+Q: What configuration file does named read at boot time?
+W: /etc/named.conf
+A: /etc/named.boot
+W: /etc/named.data/db.cache
+W: /etc/named.data/named.sec
+
+Q: A NIS client can take part in how many NIS domains?
+A: 1
+W: all domains on the same physical network
+W: all domains on one IP network
+W: There is no limit on the number of domain names in which a host can take part.
+
+Q: What is true about a NIS domain name?
+A: It consists of only one word
+W: It is a combination of multiple words separated by a dot
+W: It is a combination of multiple words separated by spaces
+W: It is a combination of multiple words separated by underscores
+
+Q: ypxfr is used on:
+W: master NIS servers
+A: slave NIS servers
+W: NIS clients
+W: DNS servers
+
+Q: What daemon is used for a NIS password change?
+W: passwd
+W: yppasswd
+W: yppasswdd
+A: rpc.yppasswdd
+
+Q: Which of the following is not a NIS map?
+W: group.byname
+W: host.byname
+W: mail.aliases
+A: mail.byname
+
+Q: Which NFS version is supported on HP-UX 11.00?
+W: V2
+W: V3
+W: V4
+A: V2 and V3
+
+Q: Which HP-UX command can be used on an NFS server to list remotely mounted filesystems by NFS clients?
+W: exportfs
+W: mount
+W: mount -a
+A: showmount
+
+Q: How should the rpcbind, nfsd, and inetd daemons be started?
+W: rpcbind, nfsd, inetd
+A: inetd, rpcbind, nfsd
+W: inetd, nfsd, rpcbind
+W: The order does not batter
+
+Q: Which RPC daemon is used in HP-UX 11.00?
+W: rpcinfo
+A: rpcbind
+W: rpcd
+W: portmap
+
+Q: What does NFS V3 have over V2?
+W: better cache management
+W: 64-bit offset for files
+W: file sizes up to 128GB are supported
+A: all of the other answers are correct
+
+Q: Which command is used to manually export filesystems for remote mount?
+W: exports
+A: exportfs
+W: showmount
+W: init
+
+Q: Which command is used to list registered RPC services on a host?
+A: rpcinfo
+W: rpcbind
+W: netstat
+W: nfsstat
+
+Q: Which of the following is not an automounter map?
+W: master map
+A: slave map
+W: direct map
+W: indirect map
+
+Q: When do you need to restart the automount daemon?
+A: after modification to the master map
+W: after modifying mount options in a direct map
+W: after modifying an indirect map
+W: all of the above
+
+Q: What is the default automounter unmount timeout?
+W: 30 seconds
+W: 60 seconds
+W: 3 minutes
+A: 5 minutes
+
+Q: The master automount map has an entry that says "/home   /etc/auto_home". /etc/auto_home says "boota  hp0:/home/boota". Where will /home/boota be mounted to locally?
+W: /boota
+W: /home/boota
+W: /tmp_mnt and linked to /boota
+A: /tmp_mnt and linked to /home/boota
+
+Q: What config file is used by xntpd?
+W: /etc/xntpd.conf
+A: /etc/ntp.conf
+W: /var/tmp/ntp/ntp.drift
+W: none of the other answers are correct
+
+Q: What is the default polling time for a ntp server?
+A: 64 seconds
+W: 60 seconds
+W: 10 seconds
+W: 100 seconds
+
+Q: What is the secondary system loader?
+A: the hpux utility
+W: the init process
+W: PDC
+W: /stand/system
+
+Q: Which of the following is not a label in the swinstall.log file?
+W: ERROR
+W: WARNING
+A: CRITICAL
+W: NOTE
+
+Q: Which command is used to build a new HP-UX kernel?
+A: mk_kernel
+W: make
+W: build_kernel
+W: make_vmunix
+
+Q: Three disks are attached to a SCSI adapter with device numbers 6, 1, and 15. Which has the highest priority?
+A: 6
+W: 1
+W: 15
+W: All disks have the same priority
+
+Q: What is the major device number for LVM device files?
+A: 64
+W: 32
+W: 128
+W: 1
+
+Q: The cron daemon is responsible for job submitted by:
+W: the crontab utility
+W: the at utility
+W: the batch utility
+A: at, batch, and crontab utilities
+
+Q: The presentation layer in the OSI reference is responsible for:
+A: data format conversion
+W: establishing a network connection
+W: routing
+W: flow control
+
+Q: What is the default subnet mask for the IP address 172.23.15.99?
+W: 255.255.255.0
+W: 255.0.0.0
+A: 255.255.0.0
+W: 172.23.255.255
+
+Q: What protocol is used to map an IP to a MAC address?
+W: ARP
+A: RARP
+W: ICMP
+W: TFTP
+
+Q: What is the name of the NTP server daemon?
+W: ntpd
+A: xntpd
+W: rpc.ntpd
+W: rpc.xntpd
+
+
+Q: You want to create a new 200MB logical volume from the volume group vg00, using the default physical extent size. Instead of taking the default logical volume name, you want to name your logical volume "newlv". What command would you use?
+W: newlv -l 200 -n newlv /dev/vg00
+A: lvcreate -L 200 -n newlv /dev/vg00
+W: lvcreate -l 200 -n newlv vg00
+W: mklv -L 200 -n newlv vg00
+N: The lvcreate command is an obvious choice for this task but specific knowledge of options here is quite important. If you were to use the -l option in place of the option the size of your new volume would be 800MB instead of the desired 200MB! (assuming the default volume extent size of 4MB had not been changed).
+
+Q: The newfs command is used to create:
+W: HFS file systems only.
+W: CDFS file systems.
+W: a mirror copy of an existing file system.
+A: HFS and JFS file systems.
+
+
+Q: Consider the following entry from /etc/ntp.conf: "server 127.127.4.2". What is being used as the time server?
+A: serial device
+W: multicast
+W: broadcast
+W: loopback
+
+
+Q: What command will provide you with the device file name for a physical disk in HP-UX?
+A: ioscan
+W: lssf
+W: fsscan
+W: bdf
+
+
+Q: With the HFS filesystem what is the number of the first alternate superblock?
+A: 16
+W: 32
+W: 64
+W: 128
+
+
+Q:  Suppose you have built a new kernel that failed to boot. The old kernel is named vmunix.alt. At the ISL prompt how can you boot with the old kernel?
+W: boot /stand/vmunix.alt
+A: hpux /stand/vmunix.alt
+W: boot vmunix.alt
+W: hpux vmunix.alt
+
+Q:  After updating NIS maps on the master server, what command is used to have slaves update their files?
+A: yppush
+W: ypbind
+W: ypsync
+
+END : TEST
+
+

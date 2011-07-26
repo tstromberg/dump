@@ -1,0 +1,80 @@
+w3notice by Thomas Stromberg
+
+***********
+What is it?
+***********
+
+Get notified with a list of changes when a webpage is modified and
+matches your keyword. Useful if you are monitoring a class news site for
+schedule changes or checking to see when your favorite employer posts a job
+for UNIX positions!
+
+
+
+
+************
+Requirements
+************
+
+Any UNIX system with crontab access and GNU diff.
+Lynx if you want to have the HTML formatted into plain text or POST.
+
+
+
+
+*****
+Usage
+*****
+
+Get notified at the 10th minute of every hour if any news gets posted for my
+math class, so long as the page has the letter "a" somewhere in the text:
+10 * * * * /usr/local/bin/w3notice "http://www.math.ncsu.edu/ma107/news.html" 'a'
+
+
+
+Check if Indiana University posts any jobs we may like, once a day:
+1 0 * * * /usr/local/bin/w3notice "https://wwwdb.ucs.indiana.edu/humanresources/secure/app/techjobreq.cfm" 'unix|macos|mac os|linux|solaris|sgi|irix'
+
+
+
+To have it e-mail you when Nikon Service updates your repair ticket. This
+example is more complex because it requires you to POST your input. To do
+so, you add the variables to the end of the URL with a | in between. Lynx is
+required.
+
+Then you can add a crontab to runs at 10am and 4pm:
+
+0 10,16 * * * /usr/local/bin/w3notice "https://www.nikonimagesvcapprove.com/status/check.cfm|billname1=strom&orderno=4092490"
+
+
+*************
+Sample Output
+*************
+
+Changes to http://www.math.ncsu.edu/ma107/news.html:
+====================================================
+--- /tmp/w3notice-http___www.math.ncsu.edu_ma107_news.html.old  Thu Sep 18
+10:47:00 2003
++++ /tmp/w3notice-http___www.math.ncsu.edu_ma107_news.html      Thu Sep 18
+10:47:09 2003
+@@ -1,6 +1,12 @@
+ 
+                                     News
+ 
++                        News: Thursday, September 18
++
++   Since classes are cancelled for today, my Thursday morning office
++   hours will be via AOL Instant Messenger only. I will not be in my
++   office.
++
+                    News: Wednesday, September 17, 9:00 PM
+ 
+    As you almost certainly know by now, NCSU has cancelled classes for
+@@ -26,7 +32,7 @@
+    materializes greater than expected. So I plan to offer the tests as
+    scheduled unless the univesity officially closes. If you are planning
+    to take the test on Thursday and decide that you cannot safely make it
+-   to campus, you will need to adjust you're schedule to take a make up
++   to campus, you will need to adjust your schedule to take a make up
+    test next week. A time for a possible makeup test will not be
+    announced before Friday.

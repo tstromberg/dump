@@ -1,0 +1,678 @@
+Q: Which has the most alcohol?
+W: 3oz. glass of wine
+W: 1oz. shot of whiskey.
+W: 12oz. bottle of beer.
+A: None of the above.
+
+Q: What are the chances of getting seriously injured or killed in a car crash?
+W: 1 in 5
+W: 1 in 4
+A: 1 in 3
+W: 1 in 2
+
+Q: When there is a bus stopped on a 4 lane highway with a turning lane, who stops?
+A: The cars the same side of the turning lane as the bus
+W: Everyone
+W: The cars behind the bus
+
+
+
+Q: When there is a bus stopped on a 4 lane highway, who stops?
+W: The cars the same side of the turning lane as the bus
+A: Everyone
+W: The cars behind the bus
+
+Q: Who is most likely to get in an accident?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+A: People who drive below the speed limit
+W: People who drive the speed limit
+W: People who drive above the speed limit
+
+Q: How many seconds should you allow between you and the other cars?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 1 second
+A: 2 seconds
+W: 3 seconds
+W: 4 seconds
+
+Q: What is the maximum speed limit in cities and towns?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+A: 35
+W: 45
+W: 55
+W: 60
+W: 70
+
+Q: What is the maximum speed limit for school busses?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 35
+A: 45
+W: 55
+W: 60
+W: 70
+
+Q: What is the maximum speed limit for activity busses?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 35
+W: 45
+A: 55
+W: 60
+W: 70
+
+Q: What is the maximum speed limit outside cities and towns?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 35
+W: 45
+A: 55
+W: 60
+W: 70
+
+Q: How many feet from a curve or hill is it illegal to pass in front of?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 300
+W: 400
+A: 500
+W: 600
+
+Q: If a passing driver honks his horn, you should?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: Honk your horn back
+W: Slow down
+A: Move to the right edge of the road
+W: Nothing
+
+Q: How many feet from a curb before an intersecting street is it illegal to park in?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 15
+A: 25
+W: 35
+
+Q: How many feet from a fire hydrant or fire station is it illegal to park in?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 5
+W: 10
+A: 15
+W: 20
+
+Q: How many feet of median must seperate intersections before they are seperated by law
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 10
+W: 20
+A: 30
+W: 40
+
+Q: A drivers license is required for which of the following 1) Sitting in the drivers seat of a running car 2) Steering a car while it is being pushed or towed
+R: DMV Handbook Sample Test
+W: 1 only
+W: 2 only
+A: 1 & 2
+W: Neither
+
+Q: If the police say you refused a chemical test for impairment, the DMV must:
+N: This is on the real test
+R: DMV Handbook Sample Test
+W: Place you on probation
+W: Wait for a court decision
+W: Assign you to a driving clinic
+A: Revoke your license for at least 12 months
+
+Q: Which of the following happens under the point system. 1) Driver gets a warning after 4 points/3 years 2) Drivers loses license after 12 points/3 years
+R: DMV Handbook Sample Test
+W: 1
+A: 2
+W: 1 & 2
+W: Neither
+
+Q: If you have 7 points, you may 1) Have to file proof of financial responsibility 2) Take a driving clinic to lose 3 points
+R: DMV Handbook Sample Test
+W: 1
+A: 2
+W: 1 & 2
+W: Neither
+
+Q: What has the highest points?
+R: DMV Handbook Sample Test
+W: Reckless driving
+W: Hit & Run w/ property damage
+W: Driving w/o license
+A: Passing a stopped schoolbus
+
+Q: A driver will lose his license if he:
+R: DMV Handbook Sample Test
+W: drives without a license
+W: passes a stopped school bus
+W: fails to yield right of way
+A: speeding more then 70mph in a 55mph zone
+
+Q: In order to restore a revoked license, you must 1) Obtain permission from the DMV in Raleigh 2) Go to a license office, pay, and reapply
+R: DMV Handbook Sample Test
+W: 1
+W: 2
+A: 1 & 2
+W: Neither
+
+Q: About half of all fatalies involve 1) A drunk person 2) more then one car
+R: DMV Handbook Sample Test
+A: 1
+W: 2
+W: 1 & 2
+W: Neither
+
+Q: The % of highway deaths caused by drunk people is:
+R: DMV Handbook Sample Test
+N: This is on the real test
+W: 10%
+W: 25%
+A: 38%
+W: 67%
+
+Q: Which is true about pedestrian deaths: 1) are 2 of 5 people killed in crashes in cities 2) mostly teenagers
+R: DMV Handbook Sample Test
+A: 1
+W: 2
+W: 1 & 2
+W: Neither
+
+Q: You can pass on the right if:
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: There are no cars nearby
+A: The lane is set aside for right turns
+W: You are on a 4+ lane highway
+
+Q: If two cars get to an intersection without signs or signals, who gets right of way?
+W: The car turning left
+W: The car turning right
+A: The car on the right
+W: The car on the left
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+
+Q: When must you stop at a railroad crossing 1) If the gates are lowered 2) if the lights are flashing
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 1
+W: 2
+A: 1 & 2
+W: Neither
+
+Q: How often should you stop at a rest stop on a trip?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+N: This is on the real test
+W: Every 75 miles
+A: Every 100 miles
+W: Every 150 miles
+W: Every 200 miles
+
+Q: How soon before the intersection should you signal a turn?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 30 feet
+W: 50 feet
+W: 75 feet
+A: 100 feet
+
+Q: How far should you be able to see with your high beams?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 150 feet
+W: 175 feet
+A: 200 feet
+
+Q: How far should you be able to see with your low beams?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 50 feet
+A: 75 feet
+W: 100 feet
+
+Q: How far should tail lights be visible?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+W: 300 feet
+W: 400 feet
+A: 500 feet
+
+Q: How far should your horn be able to be heard?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/Chapter4/Basic.html
+A: 200 feet
+W: 300 feet
+W: 400 feet
+
+Q: If you drop out previous to age 18, what happens?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print1.html
+W: You must get your licensed approved
+A: Your license gets revoked
+W: You get no restrictions anymore
+
+Q: After arriving in North Carolina, how many days do you have to renew your license?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print1.html
+W: 30
+W: 45
+A: 60
+W: 90
+
+
+Q: After changing your address, how many days do you have to renew your license?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print1.html
+W: 30
+W: 45
+A: 60
+W: 90
+
+Q: What's the illegal alcohol concentration for normal drivers?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: 0.4
+W: 0.6
+A: 0.8
+W: 0.9
+W: 0.10
+
+Q: What's the illegal alcohol concentration for commercial drivers?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+N: This is on the real test
+A: 0.4
+W: 0.6
+W: 0.8
+W: 0.9
+W: 0.10
+
+Q: How many dwi's must you have before you have to be sent to jail?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: 1
+A: 2
+W: 3
+W: 4
+
+Q: What is the minimum punishment for a first DWI, besides revocation?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: Fine up to $500, 24h imprisonment; 24h community service; 30 days w/o driving
+A: Fine up to $100, 24h imprisonment; 24h community service; 30 days w/o driving
+W: Fine up to $1000, 48h imprisonment; 40h community service; 60 days w/o driving
+W: Fine up to $2000, 48h imprisonment; 40h community service; 60 days w/o driving
+
+Q: What is the minimum punishment for a second DWI, besides revocation?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: $500, 48 hours in jail
+A: $1000, 48 hours in jail
+W: $1000, one week in jail
+W: $2000, one week in jail
+
+Q: If you get a DWI, what becomes your alcohol restriction the first time?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: 0.0
+W: 0.2
+A: 0.4
+W: 0.6
+
+Q: If you get a DWI twice, what becomes your alcohol restriction the second time?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+A: 0.0
+W: 0.2
+W: 0.4
+W: 0.6
+
+Q: If you buy alchohol for a minor, including yourself, you face:
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print2.html
+W: 30 day revocation
+W: 3 month revocation
+W: 6 month revocation
+A: 1 year revocation
+
+Q: What happens if you get 8 points on your second points suspension?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print3.html
+W: Nothing until you get to 12 points
+W: 60 days suspension
+A: 6 month suspension
+
+Q: How fast do you need to go to get a temporary 30 day revokation 1) Over 75 mph 2) Over 90mph 3) 15mph over 55mph speed limit
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print3.html
+W: 1
+W: 2
+W: 3
+A: 1 & 3
+W: 2 & 3
+W: None
+
+Q: How long are you suspended for manslaughter?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print3.html
+W: 6 months
+W: 9 months
+A: 1 year
+
+Q: You should try to look *X* seconds ahead of yourself on the road?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 5-10 seconds
+A: 10-15 seconds
+W: 15-20 seconds
+W: 20-25 seconds
+
+Q: How often should you check your mirrors?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+A: Every 10 seconds
+W: Every 15 seconds
+W: Every 20 seconds
+W: Every 30 seconds
+ 
+Q: Holding your arm out straight and pointing your finger means?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+A: Left Turn
+W: Right Turn
+W: Stopping
+
+Q: If you are going 45mph, how far before an event should you signal?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 100 feet
+W: 150 feet
+A: 200 feet
+
+Q: How many feet of visibility should you be down to before using headlights?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 300 feet
+A: 400 feet
+W: 500 feet
+
+Q: How many seconds following distance should you use on wet pavement?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 2 seconds
+A: 4 seconds
+W: 8 seconds
+
+Q: Stopping distances are how much worse when driving on wet payment?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 1-2 times
+W: 2-5 times
+A: 2-10 times
+
+Q: If you begin to hydroplane, you should:
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: Hold on the brakes
+W: Pump the brakes
+A: Take your foot off the gas
+W: Turn right
+
+Q: On packed snow, how fast should you drive?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: 75% of the speed limit
+A: 50% of the speed limit
+W: 25% of the speed limit
+
+Q: How should you stop on ice?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: Have 3X the normal stopping distance, and pump your brakes
+W: Have 3X the normal stopping distance, and lightly hold your brakes
+A: Have 3X the normal stopping distance, and let the car stop for you
+
+Q: If your brake fails, what should you do?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: Put on the emergency brake, and move to a higher gear
+A: Put on the emergency brake, and move to a lower gear
+W: Put on the emergency brake, and move to a neutral gear
+
+Q: If you have wet brakes, what should you do to dry them?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+A: Apply light pressure to the brakes
+W: Apply hard pressure to the brakes
+W: Pump your brakes
+
+Q: If a blowout happens, what should you do?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: Hold steering tightly, hold the brakes
+W: Hold steering tightly, let the engine do the braking
+A: Hold steering tightly, let the engine slow down, and then use the brakes
+
+Q: To avoid skidding on ice, you should:
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+A: Ease foot off accelerator, turn toward direction rear of car is skidding to, and countersteer
+W: Brake, turn toward direction rear of car is skidding to, and countersteer
+W: Ease foot off accelerator, turn opposite direction rear of car is skidding to, and countersteer
+W: Ease foot off accelerator, turn toward direction rear of car is skidding to, and use brakes
+
+Q: You must report the following accidents to the Police
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print4.html
+W: If someone was injured
+A: If someone was injured, or there looks like $1000 worth of damage
+W: All accidents
+
+Q: What type of signs are warning signs?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print5.html
+W: Square
+W: Diamond
+W: Penant
+A: Penant and Diamond
+
+Q: How big of a motor can a moped have and still be legal?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print6.html
+A: 50cc
+W: 75cc
+W: 100cc
+
+Q: What is the maximum speed limit of a moped?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print6.html
+A: 20mph
+W: 25mph
+W: 30mph
+
+Q: What is the minimum fine for littering?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print6.html
+W: $50
+W: $100
+A: $250
+
+Q: What is the minimum personal liability insurance?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print7.html
+W: $25,000
+W: $35,000
+A: $50,000
+
+
+Q: What is the minimum property damage liability insurance?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print7.html
+W: $5,000
+W: $10,000
+A: $15,000
+W: $20,000
+
+Q: How far behind a trailer truck is the blind spot typically?
+R: http://www.dmv.dot.state.nc.us/driverlicense/DriversHandbook/print6.html
+W: 50 feet
+W: 100 feet
+A: 200 feet
+
+Q: A CDL License is a:
+N: From http://www.awz.com/driving/tests/nc_test1.shtml
+W: Constitutional Driver License
+A: Commercial Driver License
+W: County Driver License
+W: Construction Driver License
+
+Q: The type of license needed by most drivers to operate cars and small trucks is:
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: Type A
+W: Type B
+A: Type C
+W: CDL
+
+Q: Drivers with provisionla licenses are under age:
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+A: 18
+W: 15
+W: 16
+W: 17
+
+Q: DWI stands for
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: Driving while intoxicated
+W: Driving while ingesting
+A: Driving while impaired
+W: Driving while ignorant
+
+Q: The first conviction of DWI brings a mandatory revocation period of:
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: 6 months
+A: 1 year
+W: 3 months
+W: 2 years
+
+Q: The legal age to purchase any alcoholic beverage is?
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: 18
+W: 20
+A: 21
+W: 25
+
+Q: Passing a stopped school bus loading or unloading children carries the highest point deduction against a license. What is the point penalty? 
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: 3 points
+W: 4 points
+A: 8 points
+W: 2 points
+
+Q: You should refrain from driving when in poor:
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: Physical Health
+W: Mental Health
+W: Fatigued
+A: All of the above
+
+Q: The best remedy for getting sober is:
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+W: Coffee
+A: Time
+W: Fresh Air
+W: Cold Shower
+
+Q: North Carolina seat belt law requires which of the following?: I. All drivers must wear seat belt II. All front seat belt passengers must wear safety belts 
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+A: I and II
+W: I 
+W: Neither
+W: II
+
+Q: Under what age should all children be restrained in safety belts?
+N: http://www.awz.com/driving/tests/nc_test1.shtml
+A: 4
+W: 6
+W: 8
+W: 10
+
+Q: The right of way is given to which of the following, even if wrong?
+W: Another Car
+W: Large Truck
+A: Pedestrians
+W: Motorcycles
+
+Q: Which of the rules concerning emergency vehicles is untrue? 
+W: As an emergency vehicle approaches, pull over to right and stop 
+A: Do not drive or park closer than two blocks from fire trucks responding to a call. 
+W: Remain stopped until the emergency vehicle has passed. 
+W: Do not park within 100 feet of an emergency vehicle that has stopped to investigate or to give assistance 
+
+Q: Which of the following methods of rounding a curve is unsafe? 
+A: Brake hard while rounding the curve 
+W: Slow down before you enter the curve 
+W: Stay on your side of the road as far right as safety permits 
+W: Gradually increase your speed as you round the curve 
+		 
+Q: Which of the following is true concerning intersections? 
+W: Collisions occur most frequently at intersections 
+W: They are the most dangerous places on the highway 
+W: More than 1/3 of all collisions occur at intersections 
+A: All of the above 
+
+Q: Which fact(s) is (are) true concerning brakes? 
+W: The brake pedal should be at least 1/2 of its original distance from the floor when fully depressed 
+A: The brake should be at least 1/3 of its original distance when fully depressed 
+W: The brake pedal should go all the way to the floor 
+W: It doesn't matter how far the pedal goes down when fully depressed 
+
+Q: To meet minimum tire tread specifications your car's tires should have at least
+W: 1/4 inch tread 
+W: 4/32 inch 
+A: 2/32 tread 
+W: 1/32 tread 
+
+Q: Work zone area signs are what primary color? 
+W: yellow 
+A: orange 
+W: green
+W: brown 
+		 
+Q: What type of collision is most likely associated with interstate driving 
+W: Rear end 
+A: Head on 
+W: Side swipe 
+W: U-turn collision 
+
+Q: To reduce glare from on coming cars you should: 
+W: Look far ahead into your lane 
+W: Blink your eyes frequently 
+A: Look to the right edge of the road 
+W: Look high over their lights
+
+Q: When is the road most slippery during a rainfall? 
+W: One hour after rain begins 
+A: Right after rain begins 
+W: Three hours after rain begins 
+W: One half hour after it begins
+		 	 
+Q: To prevent wearing your brakes out going down a steep hill you should 
+W: Put car in neutral and coast 
+A: Downshift 
+W: Use the emergency brake 
+W: Brake hard every 50 feet 
+
+Q: Which of the following should not be done if your vehicle breaks down? 
+W: Exit the road onto the shoulder 
+W: Tie a cloth to door or radio aerial 
+W: Raise hood and turn on flashers 
+A: Stand behind and flag passing motorists 
+		 
+Q: Stop, Yield, No U-Turn, and One-Way signs are examples of 
+W: Warning signs 
+W: Guide/Information signs 
+W: Unnecessary signs 
+A: Regulatory signs 
+
+Q: Broken yellow lines in the center of the highway indicate that traffic is moving in 
+W: Same direction 
+A: Opposite directions 
+W: Too fast for existing conditions 
+W: All of these 
+
+Q: Which of the following concepts does not exemplify good fuel economy practice? 
+A: Taking off quickly and stopping fast 
+W: Driving at moderate, steady speed
+W: Maintaining correct tire pressure 
+W: Keeping your car in good mechanical condition 
+
+Q: The minimum amount of liability insurance required is 
+A: 25,000/one person--50,000/all injuries--15,000/property damage 
+W: 50,000/one person--75,000/all injuries--25,000/property damage 
+W: 75,000/one person--100,000/all injuries--50,000/property damage 
+W: 100,000/one person--150,000/all injuries--100,000/property damage 
+
+Q: Vehicles with after-factory window tinting must pass a test of what percent visible light requirement? 
+W: 50% 
+W: 25% 
+A: 35% 
+W: 75% 
+
+Q: All motor vehicles in North Carolina must have a safety inspection every 
+W: 6 months 
+A: year 
+W: 2 years 
+W: 3 years
+
+Q: A solid yellow line in the center of the road on your side means 
+W: No U-Turn 
+W: No left turn 
+W: No passing from your lane 
+A: All of these 
+
+Q: Which of the following statements is false concerning motorcycles 
+W: Small motorcycles do not accelerate rapidly, especially uphill 
+W: Generally they stop faster than a car 
+W: About 2/3 of motorcycle collisions involve a car 
+A: Motorcycles have more security than cars 
+
+Q: What color are warning signs?
+W: Green
+W: Red
+W: Orange
+A: Yellow
+
+END : TEST

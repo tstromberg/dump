@@ -1,0 +1,31 @@
+# $HeadURL: http://svn.stromberg.org/svn/repos/dot.files/aliases $
+
+alias mkdir='mkdir -p'
+alias 'hogs'='du -kx . | sort -rn | more'
+alias 'hitlist'='find . -name "*core" -o \( -atime +120 -a -mtime +120 -a -size +250 \) -exec ls -lad {} \;'
+
+# overwrite some commands 
+if [ -x /usr/bin/killall -a ! -x /usr/bin/pkill ]; then
+  alias pkill='killall'
+fi
+
+if [ -x /usr/bin/pkill ]; then
+  alias killall='pkill'
+fi
+
+# If we have installed GNU ls, use colorization.
+if [ -x /usr/local/bin/gls ]; then
+  alias ls='/usr/local/bin/gls -F --color=auto'
+fi
+
+# pick the best ps. This checks if it's BSD, but not Mac OS X 10.5+:
+if [ -f "/etc/ttys" -a ! -x /usr/bin/dscl ]; then
+  alias 'psa'='ps -auxwm'
+else 
+  alias 'psa'='ps -afe'
+fi
+alias 'psg'='psa | grep $1'
+
+# All of the interesting site-specific stuff has moved here:
+[ -r $HOME/.aliases.local ] && . $HOME/.aliases.local
+
