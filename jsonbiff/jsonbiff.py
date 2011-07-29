@@ -144,7 +144,7 @@ class MainWindow(Frame):
       if msg and notify:
         new = set(msg).difference(set(self.last_msg))
         if new:
-          self.send_notification('New Items: \n\n' + '\n\n'.join(new))
+          self.send_notification('\n'.join(new))
 
     if msg:
       self.text.configure(height=len(msg))
