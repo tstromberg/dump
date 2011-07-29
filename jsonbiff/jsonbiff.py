@@ -1,6 +1,15 @@
 # Copyright 2011 Google Inc. All Rights Reserved.
 
-"""Simple X Window to notify when a remote JSON value has changed."""
+"""Simple X Window to notify when a remote JSON value has changed.
+
+Syntax:
+
+  ./jsonbiff.py url://to/json <value to extract> <seconds between polls>
+
+For example:
+
+
+"""
 
 __author__ = 'tstromberg@google.com (Thomas Stromberg)'
 
@@ -20,23 +29,31 @@ from Tkinter import *
 THREAD_UNSAFE_TK = False
 global_message_queue = Queue.Queue()
 global_last_message = None
-
+CLOSING_TIME = False
 
 def window_close_handler():
-  print 'Au revoir, mes amis!'
+  global CLOSING_TIME
+  # TODO(tstromberg): Force threads to exit, don't just sit back and wait.
+  print 'Closing, waiting for threads to exit.'
+  CLOSING_TIME=True
   sys.exit(1)
-
 
 def add_msg(message, root_window=None, backup_notifier=None, **kwargs):
   """Add a message to the global queue for output."""
   global global_message_queue
   global global_last_message
+  global global_root_window
   global THREAD_UNSAFE_TK
+  global CLOSING_TIME
 
-  logging.debug("add_msg: %s -> %s" % (message, root_window))
+  logging.info("add_msg: %s -> %s" % (message, root_window))
 
   if message != global_last_message:
     global_message_queue.put(message)
+
+  if CLOSING_TIME:
+    sys.exit(1)
+    return
 
   if root_window:
     try:
@@ -77,6 +94,7 @@ class MainWindow(Frame):
     self.root = root
     self.url = url
     self.var = var
+    self.worker = None
     self.last_msg = None
     self.poll_seconds = poll_seconds
     self.root.protocol('WM_DELETE_WINDOW', window_close_handler)
@@ -91,7 +109,7 @@ class MainWindow(Frame):
     self.text = Text(self.outer_frame, height=1, width=10)
 #    status = Label(outer_frame, text='...', textvariable=self.status)
 #    status.grid(row=15, sticky=W, column=0)
-    self.update_status('Starting.')
+    self.update_status('Starting.', notify=False)
     self.start_job()
 
   def message_handler(self, unused_event):
@@ -102,18 +120,21 @@ class MainWindow(Frame):
       m = global_message_queue.get()
       self.update_status(m)
 
-  def update_status(self, msg):
+  def update_status(self, msg, notify=True):
     if not isinstance(msg, list):
-      self.send_notification(msg)
+      if notify:
+        self.send_notification(msg)
       msg = [msg]
     elif isinstance(self.last_msg, list):
-      new = set(msg).difference(set(self.last_msg))
-      self.send_notification('New Items\n\n' + '\n\n'.join(new))
+      if msg and notify:
+        new = set(msg).difference(set(self.last_msg))
+        self.send_notification('New Items: \n\n' + '\n\n'.join(new))
 
     self.text.configure(height=len(msg))
+    self.text.configure(width=max([len(x) for x in msg]))
     self.text.delete(1.0, END)
     for i, item in enumerate(msg):
-      logging.warning('Inserting text [%s]: %s' % (i, item))
+      logging.info('Inserting text [%s]: %s' % (i, item))
       self.text.insert(END, '%s\n' % item)
     self.text.pack()
     self.last_msg = msg
@@ -124,9 +145,9 @@ class MainWindow(Frame):
 
   def start_job(self):
     logging.info('starting job?')
-    thread = WorkerThread(self.url, self.var, self.poll_seconds, root_window=self.root,
+    self.worker = WorkerThread(self.url, self.var, self.poll_seconds, root_window=self.root,
                           backup_notifier=self.message_handler)
-    thread.start()
+    self.worker.start()
 
 class WorkerThread(threading.Thread):
 
@@ -171,17 +192,16 @@ class JsonFetcher(object):
 
 if __name__ == '__main__':
 
-  if len(sys.argv) != 3:
+  if len(sys.argv) != 4:
     print 'jsonbiff'
     print '--------'
-    print './jsonbiff.py <url> <var>'
+    print './jsonbiff.py <url> <var> <seconds between polls>'
     sys.exit(1)
 
-  url, expression = sys.argv[1:]
+  url, expression, poll_seconds = sys.argv[1:]
   if not os.getenv('DISPLAY', None):
     logging.critical('No DISPLAY variable set.')
     sys.exit(2)
 
-
-  ui = JsonBiffGui(url, expression, poll_seconds=10)
+  ui = JsonBiffGui(url, expression, poll_seconds=int(poll_seconds))
   ui.run()
