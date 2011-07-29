@@ -31,22 +31,29 @@ global_message_queue = Queue.Queue()
 global_last_message = None
 CLOSING_TIME = False
 
+DEFAULT_TEXT_WIDTH = 12
+
+COLOR_EMPTY_BACKGROUND = 'lightgrey'
+COLOR_EMPTY_FOREGROUND = 'darkgrey'
+COLOR_FOREGROUND = 'black'
+COLOR_BACKGROUND0 = 'snow'
+COLOR_BACKGROUND1 = 'misty rose'
+
+
 def window_close_handler():
   global CLOSING_TIME
   # TODO(tstromberg): Force threads to exit, don't just sit back and wait.
   print 'Closing, waiting for threads to exit.'
-  CLOSING_TIME=True
+  CLOSING_TIME = True
   sys.exit(1)
 
-def add_msg(message, root_window=None, backup_notifier=None, **kwargs):
-  """Add a message to the global queue for output."""
-  global global_message_queue
-  global global_last_message
-  global global_root_window
-  global THREAD_UNSAFE_TK
-  global CLOSING_TIME
 
-  logging.info("add_msg: %s -> %s" % (message, root_window))
+def add_msg(message, root_window=None, backup_notifier=None, **unused_kwargs):
+  """Add a message to the global queue for output."""
+  global global_last_message
+  global THREAD_UNSAFE_TK
+
+  logging.info('add_msg: %s -> %s' % (message, root_window))
 
   if message != global_last_message:
     global_message_queue.put(message)
@@ -88,6 +95,7 @@ class JsonBiffGui(object):
     self.root.bind('<<msg>>', app.message_handler)
     self.root.mainloop()
 
+
 class MainWindow(Frame):
   def __init__(self, root, url, var, poll_seconds):
     Frame.__init__(self)
@@ -107,6 +115,12 @@ class MainWindow(Frame):
     self.outer_frame.grid(row=0, padx=6, pady=6)
 
     self.text = Text(self.outer_frame, height=1, width=10)
+    self.text.tag_config('empty', background=COLOR_EMPTY_BACKGROUND,
+                    foreground=COLOR_EMPTY_FOREGROUND)
+    self.text.tag_config('color0', background=COLOR_BACKGROUND0,
+                    foreground=COLOR_FOREGROUND)
+    self.text.tag_config('color1', background=COLOR_BACKGROUND1,
+                    foreground=COLOR_FOREGROUND)
 #    status = Label(outer_frame, text='...', textvariable=self.status)
 #    status.grid(row=15, sticky=W, column=0)
     self.update_status('Starting.', notify=False)
@@ -114,13 +128,14 @@ class MainWindow(Frame):
 
   def message_handler(self, unused_event):
     """Pinged when there is a new message in our queue to handle."""
-    logging.debug("message_handler called. Queue: %s" %
+    logging.debug('message_handler called. Queue: %s' %
                   global_message_queue.qsize())
     while global_message_queue.qsize():
       m = global_message_queue.get()
       self.update_status(m)
 
   def update_status(self, msg, notify=True):
+    tag = None
     if not isinstance(msg, list):
       if notify:
         self.send_notification(msg)
@@ -131,12 +146,22 @@ class MainWindow(Frame):
         if new:
           self.send_notification('New Items: \n\n' + '\n\n'.join(new))
 
-    self.text.configure(height=len(msg))
-    self.text.configure(width=max([len(x) for x in msg]))
+    if msg:
+      self.text.configure(height=len(msg))
+      max_user_len = max([len(x) for x in msg])
+      self.text.configure(width=max([DEFAULT_TEXT_WIDTH, max_user_len]))
+    else:
+      self.text.configure(width=DEFAULT_TEXT_WIDTH, height=1,)
+      tag = 'empty'
+      msg = ['(empty)']
+
     self.text.delete(1.0, END)
     for i, item in enumerate(msg):
-      logging.info('Inserting text [%s]: %s' % (i, item))
-      self.text.insert(END, '%s\n' % item)
+      if not tag:
+        tag = 'color%s' % (i % 2)
+      logging.debug('Inserting text [%s]: %s tag=%s' % (i, item, tag))
+      self.text.insert(END, '%s\n' % item, tag)
+      tag = None
     self.text.pack()
     self.last_msg = msg
 
@@ -146,9 +171,11 @@ class MainWindow(Frame):
 
   def start_job(self):
     logging.info('starting job?')
-    self.worker = WorkerThread(self.url, self.var, self.poll_seconds, root_window=self.root,
-                          backup_notifier=self.message_handler)
+    self.worker = WorkerThread(self.url, self.var, self.poll_seconds,
+                               root_window=self.root,
+                               backup_notifier=self.message_handler)
     self.worker.start()
+
 
 class WorkerThread(threading.Thread):
 
