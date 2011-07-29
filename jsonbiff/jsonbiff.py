@@ -128,7 +128,8 @@ class MainWindow(Frame):
     elif isinstance(self.last_msg, list):
       if msg and notify:
         new = set(msg).difference(set(self.last_msg))
-        self.send_notification('New Items: \n\n' + '\n\n'.join(new))
+        if new:
+          self.send_notification('New Items: \n\n' + '\n\n'.join(new))
 
     self.text.configure(height=len(msg))
     self.text.configure(width=max([len(x) for x in msg]))
