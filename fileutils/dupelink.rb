@@ -32,7 +32,11 @@ $Time = Time.new
 
 # Location of md5 or md5sum. Please note that md5sum performs better than
 # BSD md5, OpenSSL md5, md5deep on my Pentium III Linux box.
-$MD5="/usr/local/bin/md5deep"
+if File.exists?('/usr/bin/md5sum')
+  $MD5="/usr/bin/md5sum"
+else
+  $MD5="/usr/bin/md5"
+end
 
 $IGNORE_PERMISSIONS=1
 
