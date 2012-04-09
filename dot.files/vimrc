@@ -8,7 +8,7 @@ filetype on
 set expandtab
 set nocompatible
 " change to the directory serving our files
-"set autochdir
+set autochdir
 set backup
 set backupdir=~/.vim/backup
 set shiftwidth=2
@@ -65,6 +65,9 @@ set guifont=Inconsolata
 " This assumes a 256-color terminal. If you don't have one, get one.
 colorscheme ir_helix
 set t_Co=256
+
+" Make cut/paste not suck
+" set pastetoggle=<F2>
 
 if has("colorcolumn")
   set colorcolumn=80
