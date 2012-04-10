@@ -63,7 +63,7 @@ AIX)
 esac
 
 # Good paths to add if we see them.
-add_bin_paths="/usr/local/bin /usr/local/sbin /usr/sbin /sbin $add_bin_paths $HOME/bin"
+add_bin_paths="/usr/local/bin /usr/local/sbin /usr/sbin /sbin $add_bin_paths /usr/local/go/bin $HOME/bin"
 add_man_paths="/usr/share/man /usr/local/share/man $add_manpath $add_man_paths"
 
 ### Application Settings ##########################################################
