@@ -11,6 +11,7 @@ endif
 autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 set autoindent
+set autochdir            " set working directory to match the current file
 set backup
 set backupdir=~/.vim/backup
 set expandtab            " To insert space characters whenever the tab key is pressed
@@ -22,7 +23,7 @@ set laststatus=2         " enable the status bar
 set list                 " highlight whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set nocompatible
-set pastetoggle=<F2>
+set pastetoggle=<F2>     " hit this on insert when pasting code in
 set ruler                " show the line number on the bar
 set shiftwidth=2         " number of space characters inserted for indentation
 set showcmd              " Show (partial) command in status line.
