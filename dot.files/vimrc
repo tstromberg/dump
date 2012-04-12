@@ -1,37 +1,32 @@
-syntax on
+if filereadable("/usr/local/go/misc/vim/readme.txt")
+	set rtp+=/usr/local/go/misc/vim
+	filetype plugin indent on
+	syntax on
+endif
 
-set showmatch
-set incsearch
-set showcmd
-filetype on
 
-set expandtab
-set nocompatible
-" change to the directory serving our files
-"set autochdir
+set autoindent
 set backup
 set backupdir=~/.vim/backup
-set shiftwidth=2
+set expandtab            " To insert space characters whenever the tab key is pressed
 set hidden
-set softtabstop=2
-set autoindent
-set smartindent
-set ruler
-set showmode
 set history=200          " Store last 200 commands as history.
-set undolevels=200
-
 set hlsearch             " Highlight previous search results
-set wildmenu wildmode=longest:full
-
-" enable the status bar
-set laststatus=2
-
-" highlight whitespace
-set list
+set incsearch            " Incremental search
+set laststatus=2         " enable the status bar
+set list                 " highlight whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
-
+set nocompatible
 set pastetoggle=<F2>
+set ruler                " show the line number on the bar
+set shiftwidth=2         " number of space characters inserted for indentation
+set showcmd              " Show (partial) command in status line.
+set showmatch            " Show matching brackets.
+set showmode
+set smartindent
+set softtabstop=2
+set undolevels=200
+set wildmenu wildmode=longest:full
 
 " save precious keystrokes
 nnoremap ; :
@@ -40,20 +35,24 @@ nmap <silent> <C-D> :NERDTreeToggle<CR>
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null
+au! BufWritePost .vimrc source %
 
 " hate whitespace
 autocmd BufEnter * :syntax match Error "\s\+$"
 autocmd BufEnter * :syntax match Error " +$"
 autocmd BufEnter * :syntax match Error "^ \+\t"me=e+1
 autocmd BufEnter * :syntax match Error "\[^\t\]\t\+ \+"me=e+1
+autocmd BufWritePost *.php :%s/\s\+$//e
+autocmd BufWritePost *.rules :%s/\s\+$//e
+autocmd BufWritePost *.rb :%s/\s\+$//e
+autocmd BufWritePost BUILD :%s/\s\+$//e
+autocmd BufWritePost *.py :%s/\s\+$//e
+autocmd BufWritePost *.sh :%s/\s\+$//e
 
-
-autocmd BufEnter *.php :%s/\s\+$//e
-autocmd BufEnter *.rules :%s/\s\+$//e
-autocmd BufEnter *.rb :%s/\s\+$//e
-autocmd BufEnter BUILD :%s/\s\+$//e
-autocmd BufEnter *.py :%s/\s\+$//e
-autocmd BufEnter *.sh :%s/\s\+$//e
+" go-syntax T&D
+autocmd BufWritePost *.go :%!/usr/local/go/bin/gofmt
+autocmd FileType go setlocal nolist
+autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " presentation
 set background=dark
@@ -76,4 +75,3 @@ endif
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
