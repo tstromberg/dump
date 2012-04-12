@@ -4,8 +4,7 @@ if filereadable("/usr/local/go/misc/vim/readme.txt")
 	syntax on
 endif
 
-
-set autoindent
+set autochdir
 set backup
 set backupdir=~/.vim/backup
 set expandtab            " To insert space characters whenever the tab key is pressed
@@ -64,6 +63,9 @@ set guifont=Inconsolata
 " This assumes a 256-color terminal. If you don't have one, get one.
 colorscheme ir_helix
 set t_Co=256
+
+" Make cut/paste not suck
+" set pastetoggle=<F2>
 
 if has("colorcolumn")
   set colorcolumn=80

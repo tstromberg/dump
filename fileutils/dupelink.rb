@@ -25,18 +25,22 @@
 #######################################################################
 require 'find'
 require 'digest/md5'
-require 'sqlite'
+require 'sqlite3'
 
 $inodeHash = Hash.new
 $Time = Time.new
 
 # Location of md5 or md5sum. Please note that md5sum performs better than
 # BSD md5, OpenSSL md5, md5deep on my Pentium III Linux box.
-$MD5="/usr/local/bin/md5deep"
+if File.exists?('/usr/bin/md5sum')
+  $MD5="/usr/bin/md5sum"
+else
+  $MD5="/usr/bin/md5"
+end
 
 $IGNORE_PERMISSIONS=1
 
-# ignore files under this size. Speeds up searches a lot, and if you 
+# ignore files under this size. Speeds up searches a lot, and if you
 # are using temporary tables, it saves you RAM.
 $MINSIZE=256
 
@@ -75,67 +79,67 @@ class ProgressBar
     @lastupdate = 0
     display
   end
-  
+
   def dputs(string)
     $Time = Time.new
     #puts $Time.strftime("%H:%M") + " " + string
     # we used to put the time, now -- why bother?
     puts $Time.strftime("%H:%M") + " " + string
   end
-  
+
   def update(value)
     @value = value
   end
-  
+
   def name(name)
     @name = name
   end
-  
+
   def autoupdate=(value)
     @autoupdate = value
   end
-  
+
   def updateText(value, valueText)
     @value = value
     @valueText = valueText
     $Time = Time.new
     @elapsed = ($Time.to_i - @lastupdate)
-    
+
     if ((@elapsed > @autoupdate) || (value == @max))
       display
     end
     x=0        # damned SQLite bug!
   end
-  
+
   def max(value)
     @max = max
   end
-  
+
   def length(value)
     @length = value
   end
-  
+
   def display
     if (@max == 0)
       showMax = "?"
     else
       showMax = @max
     end
-    
+
     # if the value is 0 or less, don't bother to print up a bar.
     if (@value < 1)
       return
     end
-    
+
     percentage = (@value.to_f / @max.to_f) * 100
     bardiv = percentage.divmod((100/@length))
-    
+
     fullbars = bardiv[0]
     minibars = bardiv[1] / (50/@length)
     #dputs "p=#{percentage} f=#{fullbars} m=#{minibars}"
     meter = "=" * fullbars + "-" * minibars
     meter = meter.ljust(@length)
-    
+
     if (@valueText)
       dputs "[#{meter}] (#{percentage.to_i}%) #{@name}: #{@valueText}"
     else
@@ -155,14 +159,14 @@ class DupeLink
     # we used to put the time, now -- why bother?
     puts $Time.strftime("%H:%M") + " " + string
   end
-  
+
   def debug(string)
     if ENV['DEBUG']
       $Time = Time.new
       puts $Time.strftime("%d%b %H:%M") + "  " + string
     end
   end
-  
+
   def initialize
     $DBFile="/var/tmp/dupelink-" + $Time.to_i.to_s + ".db"
     @totalFiles = 0
@@ -170,25 +174,25 @@ class DupeLink
     @totalSpaceSaved = 0
     @filesLinked = 0
     @totalFilesChecked = 0
-    
+
     # for now, no resumes.
     if File.exists?($DBFile)
       File.unlink($DBFile)
       sleep(2)
     end
-    
+
     if (! File.exists?($DBFile))
       dputs "[ % ] Creating database in #{$DBFile}"
-      @db = SQLite::Database.new( $DBFile, 0 )
-      
+      @db = SQLite3::Database.new($DBFile)
+
       # optimizations
       @db.execute("PRAGMA default_cache_size=#{$CACHE_SIZE};");
       @db.execute("PRAGMA default_synchronous=OFF;");
       @db.execute("PRAGMA count_changes=OFF;");
-      
+
       #dputs "[ % ] Creating new tables for database"
-      
-      
+
+
       @db.execute <<SQL
 CREATE #{$TEMP} TABLE inode (
     inode INTEGER PRIMARY KEY,
@@ -200,34 +204,34 @@ CREATE #{$TEMP} TABLE inode (
     md5 VARCHAR(32)
 );
 SQL
-      
-      
+
+
       @db.execute <<SQL
 CREATE #{$TEMP} TABLE file (
     fid INTEGER PRIMARY KEY,
     finode INT NOT NULL,
-    name VARCHAR(256) 
+    name VARCHAR(256)
 );
 SQL
-      
+
       @db.execute("CREATE INDEX idxinode ON inode(inode);");
       @db.execute("CREATE INDEX idxfino ON file(finode);");
       @db.execute("CREATE INDEX idxffid ON file(fid);");
     else
-      @db = SQLite::Database.new( file, 0 )
+      @db = SQLite3::Database.new( file, 0 )
     end
   end
-  
-  
+
+
   def search(dir, maxinodes, maxfiles)
     dputs "[.s.] Finding files within #{dir}.."
     @db.transaction
-    
+
     dirFiles = 0
     searchFiles = 0
     searchInodes = 0
-    
-    
+
+
     Find.find(dir) { |path|
       if path =~ /#{$EXCEPTIONS}/
         next
@@ -236,19 +240,19 @@ SQL
       begin
         if (File.lstat(path).ftype == "file") && (File.lstat(path).size > $MINSIZE)
           inode=File.lstat(path).ino
-          
+
           if (! $inodeHash[inode])
             @db.execute("INSERT INTO inode (inode, links, perm, uid, gid, size) VALUES
                           (#{inode}, #{File.lstat(path).nlink}, #{File.lstat(path).mode}, #{File.lstat(path).uid}, #{File.lstat(path).gid}, #{File.lstat(path).size});");
             $inodeHash[inode]=1
             searchInodes = searchInodes + 1
           end
-          
+
           tpath = path.gsub(/\"/, "\"\"");
           @db.execute("INSERT INTO file (name, finode) VALUES (\"#{tpath}\", #{inode});");
           searchFiles = searchFiles + 1
           dirFiles = dirFiles + 1
-          
+
           # we actually use dirfiles, since we get a status update when a new one starts anyways.
           if (dirFiles > 1) && ((dirFiles % $SCANSTATUS_EVERY) == 1)
             dputs "[ s ] Status: #{searchFiles} files, #{searchInodes} inodes, #{path}"
@@ -256,13 +260,13 @@ SQL
             @db.commit
             @db.transaction
           end
-          
+
           if @totalInodes > maxinodes
             dputs "[!s!] Maximum inodes (#{maxinodes}) reached.). Processing.."
             @db.commit
             return
           end
-          
+
           if @totalFiles > maxfiles
             dputs "[!s!] Maximum files (#{maxfiles}) reached.). Processing.."
             @db.commit
@@ -273,16 +277,16 @@ SQL
         dputs "Could not get details on #{path}"
       end
     }
-    
+
     dputs "[ s ] Scan Complete. #{searchFiles} files (#{searchInodes} inodes) were found."
     @totalFiles = @totalFiles + searchFiles
     @totalInodes = @totalInodes + searchInodes
-    
+
     # if they have a whole lot of directories specified at the command line, give em the aggregate.
     if (@totalFiles != searchFiles)
       dputs "[ s ] The aggregated total is #{@totalFiles} files and #{@totalInodes} inodes."
     end
-    
+
     # commit the database
     begin
       @db.commit
@@ -291,7 +295,7 @@ SQL
     end
     return searchFiles
   end
-  
+
   def locateCandidates()
     dputs "[.C.] Searching database for candidates to checksum..."
     possibleSavings = 0
@@ -301,21 +305,21 @@ SQL
     @queueCandidateSpace = 0
     $Time = Time.new
     time = $Time.to_i
-    
+
     lsize  = 0
     luid  = 0
-    lgid = 0 
-    lperm  = 0 
+    lgid = 0
+    lperm  = 0
     linode  = 0
-    
+
     dbinode=0
     dbsize=1
     dbperm=2
     dbuid=3
     dbgid=4
-    
+
     @db.transaction
-    @db.execute( "SELECT inode, size, perm, uid, gid FROM inode GROUP BY inode, ORDER BY size DESC" ) do |row|
+    @db.execute( "SELECT inode, size, perm, uid, gid FROM inode GROUP BY inode ORDER BY size DESC" ) do |row|
       # obviously not a candidate. Lets see if we should go ahead and run our results before we commit this file in.
       if row[dbsize] == lsize:
         if $IGNORE_PERMISSIONS == 1 or (row[dbuid] == luid && row[dbgid] == lgid && row[dbperm] == lperm):
@@ -325,23 +329,23 @@ SQL
           @queueCandidateSpace = @queueCandidateSpace + (row[dbsize].to_i * 2)
         end
       end
-      
+
       if @queueCandidates > $MATCH_EVERY
         posSize = sizeUnit(@queueCandidateSpace)
         dputs "[ c ] #{posSize} worth of candidates found. Now analyzing file content for matches.."
         # flush the database from memory to disk
         @db.commit
-        
+
         # go go go!
         checkCandidates()
         saved = linkFiles()
-        
+
         cleanDatabase()
         @db.transaction
         @queueCandidates = 0
         @queueCandidateSpace = 0
       end
-      
+
       lsize = row[dbsize].dup
       luid = row[dbuid].dup
       lgid = row[dbgid].dup
@@ -349,44 +353,44 @@ SQL
       linode = row[dbinode].dup
     end
     @db.commit
-    
+
     # one last shot!
     if @queueCandidates > 1
       posSize = sizeUnit(@queueCandidateSpace)
       dputs "[ c ] #{posSize} of remaining candidates found. Now analyzing file content for matches.."
-      
+
       checkCandidates()
       linkFiles()
     end
-    
+
     @totalCandidateSpace = @totalCandidateSpace + @queueCandidateSpace
     @totalCandidates = @totalCandidates + @queueCandidates
     return @totalCandidateSpace
   end
-  
+
   def checkCandidates
     @db.transaction
     prog = ProgressBar.new(0, @queueCandidateSpace, "Checksumming");
     filesChecked = 0
     spaceChecked = 0
-    
+
     #dputs "[ x ] Checksumming the nominees..."
-    
+
     # cheap hack to label the SQL ordering since sqlite no longer
     # hands back a hash. It's actually faster, anyways.
     dbinode = 0
     dbname = 1
     dbsize = 2
-    
+
     # increase the automatic updates
     prog.autoupdate=45
-    
+
     # this routine seems to leak ram like a sunufabitch.
-    
+
     @db.execute( "SELECT inode, name, size FROM inode, file WHERE file.finode == inode.inode AND inode.md5=\'1\' GROUP BY inode ORDER BY size DESC" ) do |row|
       file = row[dbname]
       if File.readable?(file)
-        # if it's larger than 2.5M, lets just execute md5sum. This was 
+        # if it's larger than 2.5M, lets just execute md5sum. This was
         # determined systematically for performance reasons.
         # see the md5-sweetspot utility.
         digest = nil
@@ -403,7 +407,7 @@ SQL
             next
           end
         end
-        
+
         @db.execute("UPDATE inode SET md5=\'#{digest}\' WHERE inode=#{row[dbinode]}")
         spaceChecked = spaceChecked + row[dbsize].to_i
         filesChecked = filesChecked + 1
@@ -417,40 +421,40 @@ SQL
         dputs "[!x!] #{file} is not readable!"
       end
     end
-    
+
     @db.commit
     @totalFilesChecked = @totalFilesChecked + filesChecked
   end
-  
+
   def linkFiles
     lastNewMD5='x'
     lastNewFile='x'
     lastNewInode=0
     filesLinked=0
-    
+
     # cheap hack to label the SQL ordering since sqlite no longer
     # hands back a hash!
     dbname = 0
     dbsize = 1
     dbmd5 = 2
     dbinode = 3
-    
+
     spaceSaved = 0
     lastInode = 0
-    
+
     # why sort names in ascending instead of descending? It's because of the way our backup system works. If we accidently run
     # this script while backups are running, we want to link everything to the oldest file, not the newest. Even if it looks
     # weird when reading the output!
-    
+
     @db.execute( "SELECT name, size, md5, inode, links FROM inode, file WHERE file.finode == inode.inode AND inode.md5 != \'\' ORDER BY size DESC, links DESC, inode DESC, name ASC" ) do |row|
       filename = row[dbname]
-      
+
       if (row[dbinode] != lastNewInode) && (row[dbmd5] == lastNewMD5) && (lastNewMD5.length == 32)
         begin
           File.unlink(filename)
           File.link(lastNewFile, filename)
           filesLinked = filesLinked + 1
-          
+
           # only count if it's now a new inode. Don't bother the user
           # with printing useless linking information if it saves them no space.
           if row[dbinode] != lastInode
@@ -468,65 +472,65 @@ SQL
         lastNewInode = row[dbinode].dup
       end
     end
-    
+
     @totalSpaceSaved = @totalSpaceSaved + spaceSaved
     @filesLinked = @filesLinked + filesLinked
-    
+
     if spaceSaved > 1
       saved = sizeUnit(spaceSaved)
-      
+
       if spaceSaved != @totalSpaceSaved
         saved = saved + " (session total: " + sizeUnit(@totalSpaceSaved) + ")"
       end
-      
+
       dputs "[:L:] Linked together #{filesLinked} files, reclaiming #{saved} of space."
     end
-    
+
     return spaceSaved
   end
-  
+
   def cleanDatabase
     # This will clean all candidates, regardless of success, from the queue
     @db.execute("DELETE from inode WHERE inode.md5 != \'\'")
     @db.execute("VACUUM")
   end
-  
+
   def close
     @db.close
     File.unlink($DBFile);
   end
-  
-  
+
+
   def totalSpaceSaved
     return @totalSpaceSaved
   end
-  
+
   def filesLinked
     return @filesLinked
   end
-  
+
   def totalFilesChecked
     return @totalFilesChecked
   end
-  
+
   def totalFiles
     return @totalFiles
   end
-  
+
   def totalInodes
     return @totalInodes
   end
-  
+
   def sizeUnit(bytes)
     # change to case
     if bytes > (1024 * 1024 * 1024)
-      return sprintf("%.1fGB", bytes / 1024 / 1024 / 1024) 
+      return sprintf("%.1fGB", bytes / 1024 / 1024 / 1024)
     end
-    
+
     if bytes > (1024 * 1024)
       return sprintf("%.1fMB", bytes / 1024 / 1024)
     end
-    
+
     if bytes > 1024
       return sprintf("%.0fkb", bytes / 1024)
     else
@@ -544,7 +548,7 @@ counter = 0
 
 ARGV.each { |dir|
   counter = counter + 1
-  
+
   if ((ARGV.length > 1) && (counter < ARGV.length))
     inodes = $MAXINODES - 75000
     files = $MAXFILES - 125000
@@ -552,7 +556,7 @@ ARGV.each { |dir|
     inodes = $MAXINODES
     files = $MAXFILES
   end
-  
+
   dupe.search(dir, inodes, files)
   puts ""
 }

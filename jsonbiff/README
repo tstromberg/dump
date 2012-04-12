@@ -1,1 +1,2 @@
-Simple utility to act as a "biff" type tool for a JSON stream. Supports GNOME notify.
+Simple utility to act as a "biff" type tool for a JSON stream using Tk.
+Also Supports GNOME notify for sending notifications.
