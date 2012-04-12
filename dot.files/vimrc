@@ -1,10 +1,16 @@
+" This needs to come before any syntax statements.
 if filereadable("/usr/local/go/misc/vim/readme.txt")
-	set rtp+=/usr/local/go/misc/vim
-	filetype plugin indent on
-	syntax on
+  " See http://golang.org/misc/vim/readme.txt
+  set rtp+=/usr/local/go/misc/vim
+  filetype plugin indent on
+  " Re-format .go files when saving
+  autocmd BufWritePost *.go :silent %!/usr/local/go/bin/gofmt
 endif
 
-set autochdir
+" Go loves tabs. I don't.
+autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+set autoindent
 set backup
 set backupdir=~/.vim/backup
 set expandtab            " To insert space characters whenever the tab key is pressed
@@ -34,6 +40,8 @@ nmap <silent> <C-D> :NERDTreeToggle<CR>
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null
+
+" auto-reload changes to .vimrc
 au! BufWritePost .vimrc source %
 
 " hate whitespace
@@ -48,11 +56,6 @@ autocmd BufWritePost BUILD :%s/\s\+$//e
 autocmd BufWritePost *.py :%s/\s\+$//e
 autocmd BufWritePost *.sh :%s/\s\+$//e
 
-" go-syntax T&D
-autocmd BufWritePost *.go :%!/usr/local/go/bin/gofmt
-autocmd FileType go setlocal nolist
-autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-
 " presentation
 set background=dark
 
@@ -64,9 +67,6 @@ set guifont=Inconsolata
 colorscheme ir_helix
 set t_Co=256
 
-" Make cut/paste not suck
-" set pastetoggle=<F2>
-
 if has("colorcolumn")
   set colorcolumn=80
 else
@@ -77,3 +77,5 @@ endif
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+syntax on
