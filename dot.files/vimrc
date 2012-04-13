@@ -3,8 +3,8 @@ if filereadable("/usr/local/go/misc/vim/readme.txt")
   " See http://golang.org/misc/vim/readme.txt
   set rtp+=/usr/local/go/misc/vim
   filetype plugin indent on
-  " Re-format .go files when saving
-  autocmd BufWritePost *.go :silent %!/usr/local/go/bin/gofmt
+  " Re-format .go files when saving. This uses ftplugin/go/fmt.vim
+  autocmd BufWritePost *.go :Fmt
 endif
 
 " Go loves tabs. I don't.
@@ -65,7 +65,8 @@ colorscheme blackboard
 set guifont=Inconsolata
 
 " This assumes a 256-color terminal. If you don't have one, get one.
-colorscheme ir_helix
+"colorscheme ir_helix
+colorscheme pablo
 set t_Co=256
 
 if has("colorcolumn")
