@@ -59,7 +59,7 @@ type Task struct {
 
 func interrogate_port(conn net.Conn) (data []byte) {
 	//
-	// Create two channels: One that is triggered after a 1-second timeout,
+	// Create two channels: One that is triggered after a 2-second timeout,
 	// and one that passes data back from the connection. Whichever returns
 	// first wins!
 	timeout := make(chan bool, 1)
