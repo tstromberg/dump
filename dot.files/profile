@@ -64,7 +64,7 @@ esac
 
 # Good paths to add if we see them.
 add_bin_paths="/usr/local/bin /usr/local/sbin /usr/sbin /sbin $add_bin_paths /usr/local/go/bin $HOME/bin"
-add_man_paths="/usr/share/man /usr/local/share/man $add_manpath $add_man_paths"
+add_man_paths="/usr/share/man /usr/local/share/man $add_man_paths"
 
 ### Application Settings ##########################################################
 
@@ -91,13 +91,16 @@ do
 done
 
 # Find a good default editor and pager #####################
+vi=""
+vim=""
+
 for dir in `echo $PATH | sed s/:/" "/g`
 do
   if [ -x "$dir/vi" -a "$vi" = "" ]; then
-    vi=$dir/vi
+    vi="$dir/vi"
   fi
   if [ -x "$dir/vim" ]; then
-    vim=$dir/vim
+    vim="$dir/vim"
   fi
   if [ -x "$dir/less" ]; then
     PAGER="$dir/less"
@@ -152,13 +155,9 @@ case `id -u` in
   *) sh_prompt="$";;
 esac
 
-if [ "$BASH_VERSION" != "" ]; then
-    shell="bash"
-elif [ "$ZSH_VERSION" != "" ]; then
-    shell="zsh"
-else
-    # in case you load the script via . 
-    shell=$(basename `echo $0 | sed s/-//`)
+shell=$(basename `echo $SHELL | sed s/-//`)
+if [ "$shell" = "" ]; then
+  shell=$(basename `echo $0 | sed s/-//`)
 fi
 
 case $shell in
@@ -174,13 +173,13 @@ case $shell in
     export PS1
   ;;
   zsh)
-    histdir=$HOME/.zh
-    mkdir -p $histdir 2>/dev/null
-    HISTFILE=${histdir}/${hostname}.${USER}.$$
+    HISTDIR=$HOME/.zh/$(date +'%Y-%m-%d')
+    mkdir -p $HISTDIR 2>/dev/null
+    HISTFILE=${HISTDIR}/$$.${hostname}.${USER}
     HISTSIZE=5000
     SAVEHIST=5000
     PROMPT="%n@%m:%40~%# "
-    export PROMPT HISTFILE HISTSIZE SAVEHIST
+    export PROMPT HISTFILE HISTDIR HISTSIZE SAVEHIST
   ;;
 esac
 

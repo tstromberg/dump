@@ -28,9 +28,9 @@ alias host='nocorrect host'
 alias emacs='nocorrect emacs'
 alias touch='nocorrect touch'
 alias grep='nocorrect grep'
-	
-setopt correctall		# correct all
-setopt autocd			# go into a directory if it is entered.
+  
+setopt correctall   # correct all
+setopt autocd     # go into a directory if it is entered.
 setopt appendhistory
 #setopt extendedglob
 
@@ -67,98 +67,96 @@ fi
 valid_term=`echo $TERM | egrep 'xterm-color|xterm|ansi|screen|cons25|cons50'`
 if [ "$valid_term" ]; then
 
-	# colored prompts.
-	min_time=2
+  # colored prompts.
+  min_time=2
 
-	fg_green=$'%{\e[0;32m%}'
-	fg_blue=$'%{\e[0;34m%}'
-	fg_cyan=$'%{\e[0;36m%}'
-	fg_red=$'%{\e[0;31m%}'
-	fg_brown=$'%{\e[0;33m%}'
-	fg_purple=$'%{\e[0;35m%}'
+  fg_green=$'%{\e[0;32m%}'
+  fg_blue=$'%{\e[0;34m%}'
+  fg_cyan=$'%{\e[0;36m%}'
+  fg_red=$'%{\e[0;31m%}'
+  fg_brown=$'%{\e[0;33m%}'
+  fg_purple=$'%{\e[0;35m%}'
 
-	fg_light_grey=$'%{\e[0;37m%}'
-	fg_dark_grey=$'%{\e[1;30m%}'
+  fg_light_grey=$'%{\e[0;37m%}'
+  fg_dark_grey=$'%{\e[1;30m%}'
 
-	fg_light_red=$'%{\e[1;31m%}'
-	fg_light_blue=$'%{\e[1;34m%}'
-	fg_light_green=$'%{\e[1;32m%}'
-	fg_light_cyan=$'%{\e[1;36m%}' fg_light_red=$'%{\e[1;31m%}'
-	fg_light_purple=$'%{\e[1;35m%}'
-	fg_yellow=$'%{\e[1;33m%}'
-	fg_no_color=$'%{\e[0m%}'
+  fg_light_red=$'%{\e[1;31m%}'
+  fg_light_blue=$'%{\e[1;34m%}'
+  fg_light_green=$'%{\e[1;32m%}'
+  fg_light_cyan=$'%{\e[1;36m%}' fg_light_red=$'%{\e[1;31m%}'
+  fg_light_purple=$'%{\e[1;35m%}'
+  fg_yellow=$'%{\e[1;33m%}'
+  fg_no_color=$'%{\e[0m%}'
 
-	fg_white=$'%{\e[1;37m%}'
-	fg_black=$'%{\e[0;30m%}'
+  fg_white=$'%{\e[1;37m%}'
+  fg_black=$'%{\e[0;30m%}'
 
-	col_bright=$fg_light_green
-	col_dark=$fg_green
-	dark=$fg_dark_grey
-	dull=$fg_light_grey
-	bright=$fg_white
+  col_bright=$fg_light_green
+  col_dark=$fg_green
+  dark=$fg_dark_grey
+  dull=$fg_light_grey
+  bright=$fg_white
 
-	# design a nice prompt.
-	hostname=`echo $HOST | cut -d. -f1`
-	if [ `echo $hostname | grep $USERNAME` ]; then
-		host_type="personal"
-	elif [ `echo $hostname | egrep dhcp` ]; then
-		host_type="dhcp"
-	elif [ `echo $hostname | egrep "$danger_hosts"` ]; then
-		host_type="danger"
-	else
-		host_type="other"
-	fi
+  # design a nice prompt.
+  hostname=`echo $HOST | cut -d. -f1`
+  if [ `echo $hostname | grep $USERNAME` ]; then
+    host_type="personal"
+  elif [ `echo $hostname | egrep dhcp` ]; then
+    host_type="dhcp"
+  elif [ `echo $hostname | egrep "$danger_hosts"` ]; then
+    host_type="danger"
+  else
+    host_type="other"
+  fi
     
-	case $host_type in
-		personal)
-			hostinfo=""
-			;;
-		dhcp)
-			hostinfo="${col_dark}dhcp"
-			;;
-		danger)
-			col_bright=$fg_yellow
-			col_dark=$fg_yellow
-			dark=$fg_brown
-			hostinfo="${col_bright}$hostname"
-			;;
-		other)
-			col_bright=$fg_light_cyan
-			col_dark=$fg_cyan
-			hostinfo="${col_bright}$hostname"
-	esac
+  case $host_type in
+    personal)
+      hostinfo=""
+      ;;
+    dhcp)
+      hostinfo="${col_dark}dhcp"
+      ;;
+    danger)
+      col_bright=$fg_yellow
+      col_dark=$fg_yellow
+      dark=$fg_brown
+      hostinfo="${col_bright}$hostname"
+      ;;
+    other)
+      col_bright=$fg_light_cyan
+      col_dark=$fg_cyan
+      hostinfo="${col_bright}$hostname"
+  esac
 
-	function precmd {
-          # This may be bad.
-          HISTFILE=${histdir}/${hostname}.${USER}.$$
-    	case $os in
-    	    Linux|NetBSD|OpenBSD|FreeBSD|Darwin)
-    		    seconds=`date +'%s'`;;
-    		AIX|SunOS)
+  function precmd {
+      case $os in
+          Linux|NetBSD|OpenBSD|FreeBSD|Darwin)
+            seconds=`date +'%s'`;;
+        AIX|SunOS)
                 seconds=`perl -e 'print time()'`;;
             *)
                 seconds=`echo 0` ;;
         esac
         last_seconds=${last_seconds-$seconds}
-		diff=$((seconds - last_seconds))
-		case $USER in
-			$me) user_at="" ;;
-			root) user_at="ROOT${dark}@" ;;
-			*) user_at="${USER}${dark}@" ;;
-		esac
-		if [ $diff -gt $min_time ]; then		
-			info="${dark}[${col_dark}`printf "+%4.4d" $diff`${dark}]"
-		else
-			info=""
-		fi
-	
-		RPS1="$info ${col_dark}${user_at}${hostinfo}${dark}:${col_bright}%40~${fg_no_color}"
-		if [ "$USER" = "root" ]; then
-			PS1="${fg_light_red}%#${fg_light_grey} "
-		else
-			PS1="${col_bright}%#${fg_light_grey} "
-		fi	
-		last_seconds=$seconds
-	}
+    diff=$((seconds - last_seconds))
+    case $USER in
+      $me) user_at="" ;;
+      root) user_at="ROOT${dark}@" ;;
+      *) user_at="${USER}${dark}@" ;;
+    esac
+    if [ $diff -gt $min_time ]; then    
+      info="${dark}[${col_dark}`printf "+%4.4d" $diff`${dark}]"
+    else
+      info=""
+    fi
+  
+    RPS1="$info ${col_dark}${user_at}${hostinfo}${dark}:${col_bright}%40~${fg_no_color}"
+    if [ "$USER" = "root" ]; then
+      PS1="${fg_light_red}%#${fg_light_grey} "
+    else
+      PS1="${col_bright}%#${fg_light_grey} "
+    fi  
+    last_seconds=$seconds
+  }
 fi
 
