@@ -18,17 +18,24 @@ func handleConnection(conn net.Conn) {
 	fmt.Fprintf(wconn, "220 %s ESMTP stowaway\n", hostname)
 	wconn.Flush()
 
-	response := []byte("")
-	response, _, err = rconn.ReadLine()
-	if err != nil {
-		log.Printf("ReadLine error: %s", err)
-	} else {
-		log.Printf("Request: %s", response)
-		print("%s", response)
-		fmt.Fprintf(wconn, "250 Fantastic!\n")
-		wconn.Flush()
+	for {
+		response := []byte("")
+		response, _, err = rconn.ReadLine()
+		if err != nil {
+			log.Printf("ReadLine error: %s", err)
+		} else {
+			log.Printf("Request: %s", response)
+			print("%s", response)
+			fmt.Fprintf(wconn, "250 Fantastic!\n")
+			wconn.Flush()
+		}
 	}
+
 }
+
+func commandHelo(conn net.Conn) {
+}
+
 
 func listenForConnections() {
 	ln, err := net.Listen("tcp", ":2500")
