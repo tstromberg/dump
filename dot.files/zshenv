@@ -11,6 +11,9 @@ danger_hosts="firewall|backup|ticket"
 bindkey -e
 os=`uname -s`
 
+# Be very paranoid about shell expansion
+set -o nounset
+
 # Watch for other interactive logins. 
 watch=(all)
 # These are the commands we do not attempt auto-completion on.
@@ -74,8 +77,8 @@ if [ "$valid_term" ]; then
 	fg_brown=$'%{\e[0;33m%}'
 	fg_purple=$'%{\e[0;35m%}'
 
-	fg_light_gray=$'%{\e[0;37m%}'
-	fg_dark_gray=$'%{\e[1;30m%}'
+	fg_light_grey=$'%{\e[0;37m%}'
+	fg_dark_grey=$'%{\e[1;30m%}'
 
 	fg_light_red=$'%{\e[1;31m%}'
 	fg_light_blue=$'%{\e[1;34m%}'
@@ -90,8 +93,8 @@ if [ "$valid_term" ]; then
 
 	col_bright=$fg_light_green
 	col_dark=$fg_green
-	dark=$fg_dark_gray
-	dull=$fg_light_gray
+	dark=$fg_dark_grey
+	dull=$fg_light_grey
 	bright=$fg_white
 
 	# design a nice prompt.
