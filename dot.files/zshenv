@@ -11,9 +11,6 @@ danger_hosts="firewall|backup|ticket"
 bindkey -e
 os=`uname -s`
 
-# Be very paranoid about shell expansion
-set -o nounset
-
 # Watch for other interactive logins. 
 watch=(all)
 # These are the commands we do not attempt auto-completion on.
