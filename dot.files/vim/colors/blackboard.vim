@@ -34,6 +34,7 @@ if has("gui_running")
   highlight clear Search
   highlight Search guibg=#1C3B79
   highlight PreProc guifg=#FF5600
+  highlight Error guibg=red guifg=white
 
   "HTML Colors
   highlight link htmlTag Type
@@ -52,4 +53,7 @@ if has("gui_running")
 
   "Rails Colors
   highlight link railsMethod Type
+
+  " Added by tstromberg
+
 end

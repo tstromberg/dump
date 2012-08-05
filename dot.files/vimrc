@@ -7,6 +7,7 @@ if filereadable("/usr/local/go/misc/vim/readme.txt")
   autocmd BufWritePost *.go :Fmt
 endif
 
+
 " Go loves tabs. I don't.
 autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
@@ -45,27 +46,11 @@ cmap w!! w !sudo tee % >/dev/null
 " auto-reload changes to .vimrc
 au! BufWritePost .vimrc source %
 
-" hate whitespace
-autocmd BufEnter * :syntax match Error "\s\+$"
-autocmd BufEnter * :syntax match Error " +$"
-autocmd BufEnter * :syntax match Error "^ \+\t"me=e+1
-autocmd BufEnter * :syntax match Error "\[^\t\]\t\+ \+"me=e+1
-autocmd BufWritePost *.php :%s/\s\+$//e
-autocmd BufWritePost *.rules :%s/\s\+$//e
-autocmd BufWritePost *.rb :%s/\s\+$//e
-autocmd BufWritePost BUILD :%s/\s\+$//e
-autocmd BufWritePost *.py :%s/\s\+$//e
-autocmd BufWritePost *.sh :%s/\s\+$//e
-
 " presentation
 set background=dark
-
-" safe options for a 16-color terminal.
-colorscheme blackboard
 set guifont=Inconsolata
 
 " This assumes a 256-color terminal. If you don't have one, get one.
-"colorscheme ir_helix
 colorscheme pablo
 set t_Co=256
 
@@ -75,9 +60,32 @@ else
   au BufWinEnter * let w:m2=matchadd('Comment', '\%>80v.\+', -1)
 endif
 
+" hate whitespace: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" automatically strip trailing whitespace from these file formats
+autocmd BufWritePost *.php :%s/\s\+$//e
+autocmd BufWritePost *.rules :%s/\s\+$//e
+autocmd BufWritePost *.rb :%s/\s\+$//e
+autocmd BufWritePost BUILD :%s/\s\+$//e
+autocmd BufWritePost *.py :%s/\s\+$//e
+autocmd BufWritePost *.sh :%s/\s\+$//e
+autocmd BufWritePost *.yml :%s/\s\+$//e
+autocmd BufWritePost *.yaml :%s/\s\+$//e
+autocmd BufWritePost *.gcl :%s/\s\+$//e
+
+
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
 syntax on
+
+" bastards be resetting things.
+highlight ExtraWhitespace ctermbg=red guibg=red
