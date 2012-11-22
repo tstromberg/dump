@@ -62,8 +62,16 @@ AIX)
   ;;
 esac
 
-# Be very paranoid about shell expansion
-set -o nounset
+
+for dir in `echo $add_man_paths | xargs`
+do
+  if [ -d "$dir" -a -x "$dir" -a ! -L "$dir" ]; then
+    case "$MANPATH" in
+      (*$dir*) ;;
+      (*) MANPATH="$MANPATH:$dir"
+    esac
+  fi
+done
 
 # Good paths to add if we see them.
 add_bin_paths="/usr/local/bin /usr/local/sbin /usr/sbin /sbin $add_bin_paths /usr/local/go/bin $HOME/bin"
@@ -83,15 +91,6 @@ do
   fi
 done
 
-for dir in `echo $add_man_paths | xargs`
-do
-  if [ -d "$dir" -a -x "$dir" -a ! -L "$dir" ]; then
-    case "$MANPATH" in
-      (*$dir*) ;;
-      (*) MANPATH="$MANPATH:$dir"
-    esac
-  fi
-done
 
 # Find a good default editor and pager #####################
 vi=""
@@ -178,7 +177,7 @@ case $shell in
   zsh)
     HISTDIR=$HOME/.zh/$(date +'%Y-%m-%d')
     mkdir -p $HISTDIR 2>/dev/null
-    HISTFILE=${HISTDIR}/$$.${hostname}.${USER}
+    HISTFILE=${HISTDIR}/$$.`hostname`.${USER}
     HISTSIZE=5000
     SAVEHIST=5000
     PROMPT="%n@%m:%40~%# "
@@ -190,3 +189,7 @@ PATH=`echo $PATH | sed -e s/^://g | sed -e s/:$//g`
 MANPATH=`echo $MANPATH | sed -e s/^://g | sed -e s/:$//g`
 
 export EDITOR MANPATH PATH PAGER TERM
+
+# Be very paranoid about shell expansion
+#set -o nounset
+
