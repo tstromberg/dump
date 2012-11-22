@@ -35,7 +35,7 @@ $Time = Time.new
 if File.exists?('/usr/bin/md5sum')
   $MD5="/usr/bin/md5sum"
 else
-  $MD5="/usr/bin/md5"
+  $MD5="md5 -q"
 end
 
 $IGNORE_PERMISSIONS=1
@@ -397,7 +397,7 @@ SQL
         if row[dbsize].to_i > 2482206
           digest = `#{$MD5} "#{file}"`.split(' ')[0]
           if ! digest or digest.length != 32
-            dputs "[!x!] #{$MD5} on #{file} return invalid: #{digest} - using internal"
+            dputs "[!x!] #{$MD5} '#{file}' return invalid: '#{digest}' - using internal"
           end
 	end
         if ! digest or digest.length != 32
