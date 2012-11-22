@@ -87,5 +87,10 @@ endif
 
 syntax on
 
+" useful for syntastic
+let g:syntastic_python_checker_args = '--max-line-length=80 --max-complexity=9'
+call pathogen#infect()
+
+
 " bastards be resetting things.
 highlight ExtraWhitespace ctermbg=red guibg=red
