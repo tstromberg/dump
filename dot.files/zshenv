@@ -64,8 +64,10 @@ fi
 valid_term=`echo $TERM | egrep 'xterm-color|xterm|ansi|screen|cons25|cons50'`
 if [ "$valid_term" ]; then
 
-  # colored prompts.
+  # Only show time spent if it exceeds this number
   min_time=2
+  # Only beep if a command errors that takes longer than this to run
+  min_beep_time=15
 
   fg_green=$'%{\e[0;32m%}'
   fg_blue=$'%{\e[0;34m%}'
@@ -105,7 +107,7 @@ if [ "$valid_term" ]; then
   else
     host_type="other"
   fi
-    
+
   case $host_type in
     personal)
       hostinfo=""
@@ -126,6 +128,7 @@ if [ "$valid_term" ]; then
   esac
 
   function precmd {
+    result=$?
       case $os in
           Linux|NetBSD|OpenBSD|FreeBSD|Darwin)
             seconds=`date +'%s'`;;
@@ -135,25 +138,32 @@ if [ "$valid_term" ]; then
                 seconds=`echo 0` ;;
         esac
         last_seconds=${last_seconds-$seconds}
-    diff=$((seconds - last_seconds))
+    duration=$((seconds - last_seconds))
     case $USER in
       $me) user_at="" ;;
       root) user_at="ROOT${dark}@" ;;
       *) user_at="${USER}${dark}@" ;;
     esac
-    if [ $diff -gt $min_time ]; then    
-      info="${dark}[${col_dark}`printf "+%4.4d" $diff`${dark}]"
+    if [ $duration -gt $min_time ]; then
+      info="${dark}[${col_dark}`printf "+%4.4d" $duration`${dark}]"
     else
       info=""
     fi
-  
-    RPS1="$info ${col_dark}${user_at}${hostinfo}${dark}:${col_bright}%40~${fg_no_color}"
+    if [ "$result" -ne 0 ]; then
+      info="${fg_red}|${fg_light_red}${result}${fg_red}|${info}"
+      if [ "$duration" -gt $min_beep_time ]; then
+        # http://superuser.com/questions/513013/how-can-i-add-a-beep-to-zshs-prompt
+        info="${fg_white}*%{$(echo "\a")%}${info}"
+      fi
+    fi
+    RPS1="$info ${col_dark}${user_at}${hostinfo}${dark}:${col_bright}%3c${fg_no_color}"
     if [ "$USER" = "root" ]; then
       PS1="${fg_light_red}%#${fg_light_grey} "
     else
       PS1="${col_bright}%#${fg_light_grey} "
-    fi  
+    fi
     last_seconds=$seconds
+    result=0
   }
 fi
 
