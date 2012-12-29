@@ -42,7 +42,7 @@ $IGNORE_PERMISSIONS=1
 
 # ignore files under this size. Speeds up searches a lot, and if you
 # are using temporary tables, it saves you RAM.
-$MINSIZE=256
+$MINSIZE=1024
 
 # Should tables be temporary (in memory) or on disk? temporary is faster.
 # Comment this out if you find yourself running out of RAM.
@@ -346,11 +346,11 @@ SQL
         @queueCandidateSpace = 0
       end
 
-      lsize = row[dbsize].dup
-      luid = row[dbuid].dup
-      lgid = row[dbgid].dup
-      lperm = row[dbperm].dup
-      linode = row[dbinode].dup
+      lsize = row[dbsize]
+      luid = row[dbuid]
+      lgid = row[dbgid]
+      lperm = row[dbperm]
+      linode = row[dbinode]
     end
     @db.commit
 
@@ -469,7 +469,7 @@ SQL
         # only set the lastNew if it's a new md5 hash.
         lastNewMD5 = row[dbmd5].dup
         lastNewFile = filename.dup
-        lastNewInode = row[dbinode].dup
+        lastNewInode = row[dbinode]
       end
     end
 
