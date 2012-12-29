@@ -1,16 +1,17 @@
 #!/bin/sh
-# Script to toggle the radio state on an Asus RT-AC66U wireless router. This
-# was created so that I could have a crontab entry that disabled the wireless
-# network on Sanday afternoons.
-#
-# To use, you must make an entry for your web admin console in ~/.netrc
-#
-# machine 10.1.10.28 login admin password ????????
 #
 # Usage:
 #
 # taggle_asus_ac66u_radio.sh <ip> [disable|enable] [2.4|5|all]
 #
+# Script to toggle the radio state on an Asus RT-AC66U wireless router.
+# This was created so that I could have a crontab entry that disabled the
+# wirelessi network on Sanday afternoons.
+#
+# NOTE: You must store your admin password in ~/.netrc in this form:
+#
+# machine 10.1.10.28 login admin password ????????
+
 
 # AUTHOR: Thomas Stromberg <thomas%stromberg.org>
 set -u
