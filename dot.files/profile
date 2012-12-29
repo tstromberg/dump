@@ -74,6 +74,11 @@ add_bin_paths="
 add_man_paths="/usr/share/man /usr/local/share/man $add_man_paths"
 
 ### Application Settings ##########################################################
+if [ -d "/usr/local/go" ]; then
+  GOROOT=/usr/local/go
+  GOBIN=$GOROOT/bin
+  export GOBIN GOROOT
+fi
 
 # avoid adding duplicate paths
 for dir in `echo $add_bin_paths | xargs`
