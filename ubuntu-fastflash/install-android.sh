@@ -13,6 +13,7 @@ IMAGES_URL="https://developers.google.com/android/nexus/images"
 WORKDIR="${HOME}/.ubuntu_fastflash"
 
 function get() {
+  echo "Get: $1"
   if [ ! -s "$(basename $1)" ]; then
     curl -L -O $1
   fi
@@ -23,7 +24,7 @@ if [ -z "$DEVICE_NAME" ]; then
   exit 1
 fi
 
-latest_url=$(curl -s ${IMAGES_URL} | egrep -o "https.*${DEVICE_NAME}.*tgz" | tail -1)
+latest_url=$(curl -s ${IMAGES_URL} | egrep -o "https.*/${DEVICE_NAME}-.*tgz" | tail -1)
 
 if [ -z "$latest_url" ]; then
   echo "Unable to find latest ${DEVICE_NAME} build on ${IMAGES_URL}"
