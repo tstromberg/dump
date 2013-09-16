@@ -9,7 +9,7 @@ author_email: t@stromberg.org
 disqus_id: sf2sd
 
 # Your theme. "default" or "sf2sd"
-theme: default
+theme: sf2sd
 
 # For analytics, you must register at https://support.google.com/analytics/answer/1008080?hl=en
 google_analytics_id: UA-41637387-1
