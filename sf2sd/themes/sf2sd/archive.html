@@ -27,14 +27,13 @@
   {{ range .Entries }}
           <article>
           <header>
+          <div class="date">{{.Month}} {{.Day}}, {{.Year}}</div>
             <h1><a href="{{$.BaseURL}}{{.RelativeURL}}">{{.Title}}</a>
             </h1>
               <div class="comment_info">
                 <a class="comment_count" href="{{$.BaseURL}}{{.RelativeURL}}#disqus_thread"></a></span>
               </div>
               <div class="author">{{.Author}}</div>
-              <div class="date">{{.Year}}-{{.Month}}-{{.Day}}</div>
-
             </header>
             <section class="post">
               {{.Excerpt }}

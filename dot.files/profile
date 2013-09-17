@@ -201,3 +201,8 @@ export EDITOR MANPATH PATH PAGER TERM
 # Be very paranoid about shell expansion
 #set -o nounset
 
+
+# Setting PATH for MacPython 2.4
+# The orginal version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+export PATH

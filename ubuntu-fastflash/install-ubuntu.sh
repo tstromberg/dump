@@ -18,6 +18,7 @@ set -e  # errexit
 
 function get() {
   basename=$(basename $1)
+  echo "Get: $1"
   if [ ! -s "${basename}" ]; then
     curl -L -O "$1"
 

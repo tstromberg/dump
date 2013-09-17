@@ -2,7 +2,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background: url(./rover_bg.gif) no-repeat fixed 0 0;
+  background: url(./rover.gif) no-repeat fixed 0 0;
   background-size: cover;
   color:  #d5d5d5;
 }
@@ -160,6 +160,7 @@ background: linear-gradient(to bottom, #000000 0%,#090909 13%);
 
 #content {
 	padding: 8px;
+        min-height: 800px;
 }
 
 #content h1 {
