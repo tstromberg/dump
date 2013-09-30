@@ -40,6 +40,9 @@ available_keywords = [
   'not found in',
   'not found\.\.\.', # tc
   'nothing found',
+  'Status:\s+Available', # gs
+  'available for purchase', # sh, io
+
 ]
 
 taken_keywords = [
@@ -86,6 +89,7 @@ taken_keywords = [
   'registrar:', # ru
   'reserved name', # tw
   'tech-c:', # lv
+  'Status\s+:\s+Live', # io
 ]
 
 $available_regexp = available_keywords.join('|')
@@ -165,7 +169,7 @@ domains.each do |next_domain|
     end
   end
   print "#{status}: #{full_domain}"
-  if status == 'Unknown':
+  if status == 'Unknown'
     print "\t\t# #{whois_server}: %s\n" % output.gsub(/[\r\n]/, '')
   else
     puts

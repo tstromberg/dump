@@ -77,7 +77,7 @@ end
 dictionary.each do |word|
   tlds.each do |tld|
     printf "%s.%s\n", word, tld
-    if word.end_with?(tld):
+    if word.end_with?(tld)
       puts word.gsub(/(#{tld})$/, '.\1')
     end
   end
