@@ -3,6 +3,8 @@
   <head>
     <style>
 
+
+
 body {
   background: #c1c1c1;
   color: #808080;
@@ -107,15 +109,15 @@ h6 {
   clear: both;
   color: #444;
   font-family: 'Open Sans',Arial,sans-serif;
-  margin: 40px 0 40px 0;
-  padding: 20px 0;
+  padding: 25px 0;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
   color: #444;
   font-weight: 300;
   font-size: 20px;
-  line-height: 32px;
   text-align: center;
+  margin-bottom: 20px;
+  margin-top: 80px;    
 }
 
 .project {
@@ -128,9 +130,25 @@ h6 {
 }
 
 .details {
-  margin-left: 20px;
-  float: left;
-  width: 565px;
+  margin-left: 2em;
+}
+
+.details ul {
+    width: 50em;
+}
+
+.muted {
+  padding-left: 1em;
+  font-weight: normal;
+}
+
+#skills p {
+  margin-left: 1em;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #444;
+  letter-spacing: 0.2em;
 }
 
 </style>
@@ -161,33 +179,26 @@ h6 {
   <section id="experience">
     <h3>Working Experience</h3>
     <section class="project">
-      <section class="project_meta">
-
-         <h6>2004 - 2014</h6>
-      </section>
-  
       <section class="details">
         <h4>Chief Technology Officer</h4>
-         <h5>Research Triangle Software</h5>
-
+        <h5>Research Triangle Software
+        <span class="muted">2004 - 2014</span>
+        </h5>
         <ul>
             <li>Worked on <a href="http://www.lettermark.com/">LetterMark</a>,
                 a SaaS for branded e-mail marketing. This included redesigning the system for high throughput, high availability, and lower support costs.</li>
-            <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS.</li>
+
              <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, Linux, and FreeBSD.</li>
+            <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS.</li>
              <li>Implemented SVN, ReviewBoard, Buildbot and VMWare to provide developers with a consistent and automated build environment.</li>
         </ul>
       </section>
     </section>
 
     <section class="project">
-      <section class="project_meta">
-
-         <h6>2002</h6>
-      </section>
       <section class="details">
         <h4>Desktop Support Technician</h4>
-         <h5>Georgia Department of Human Services</h5>
+        <h5>Georgia Department of Human Services <span class="muted">2002</span></h5>
 
         <ul>
             <li>Created a custom calendaring solution using PHP for intenal use, replacing GroupWise.</li> 
@@ -201,14 +212,9 @@ h6 {
   <section id="projects">
     <section class="project">
       <h3>Projects</h3>
-      <section class="project_meta">
-
-         <h6>Windows</h6>
-      </section>
-  
       <section class="details">
         <h4>Flyswatter (http://code.google.com/p/flyswatter/)</h4>
-         <h5>C++, PHP</h5>
+        <h5>C++, PHP <span class="muted">(Windows)</span></h5>
         <ul>
             <li>Crash reporter library for Windows</li>
             <li>Includes web interface which uses the Breakpad symbol processor.</li>
@@ -218,21 +224,23 @@ h6 {
   </section>
 
   <section id="skills">
-    <h3>Related Skills</h3>
+    <section class="project">
+      <h3>Related Skills</h3>
+      <section class="details">
+        <h4>Programming Languages</h4>
+        <p>C/C++, C#, Objective-C, Java, Visual Basic, Ruby, Perl, and Python</p>
 
-    <h4>Programming Languages</h4>
-    <p>C/C++, C#, Objective-C, Java, Visual Basic, Ruby, Perl, and Python</p>
+        <h4>Operating Systems</h4>
+        <p>Windows, Mac OS X, iOS, FreeBSD, Linux, Solaris</p>
 
-    <h4>Operating Systems</h4>
-    <p>Windows, Mac OS X, iOS, FreeBSD, Linux, Solaris</h4>
+        <h4>Databases</h4>
+        <p>PostgreSQL, MySQL, OpenLDAP, Oracle</p>
 
-    <h4>Databases</h4>
-    <p>PostgreSQL, MySQL, OpenLDAP, Oracle</p>
-
-    <h4>Misc</h4>
-    <p>Experience with Subversion, CVS, ReviewBoard, Buildbot, Bash, Visual Studio, etc.</p>
+        <h4>Misc</h4>
+        <p>Experience with Subversion, CVS, ReviewBoard, Buildbot, Bash, Visual Studio, etc.</p>
+      </section>
+    </section>
   </section>
-
 </div>
 </body>
 </html>
