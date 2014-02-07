@@ -117,7 +117,7 @@ h6 {
   font-size: 20px;
   text-align: center;
   margin-bottom: 20px;
-  margin-top: 80px;    
+  margin-top: 80px;
 }
 
 .project {
@@ -151,6 +151,10 @@ h6 {
   letter-spacing: 0.2em;
 }
 
+a, a:visited {
+  color: #346699;
+}
+
 </style>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css" />
   <title>David Wimsey: Resume</title>
@@ -167,7 +171,7 @@ h6 {
         <address>1835 Tarbert Drive,<br />Cary, North Carolina<br />USA</address>
       </section>
       <section id="virtual">
-        <address>david@wimsey.us</br />http://wimsey.us/<br />+1-919-657-0505</address>
+      <address>david@wimsey.us</br /><a href="http://wimsey.us/">http://wimsey.us/</a><br /><strong>+1-919-657-0505</strong></address>
       </section>
     </section>
   </header>
@@ -186,11 +190,11 @@ h6 {
         </h5>
         <ul>
             <li>Worked on <a href="http://www.lettermark.com/">LetterMark</a>,
-                a SaaS for branded e-mail marketing. This included redesigning the system for high throughput, high availability, and lower support costs.</li>
+                a SaaS for branded e-mail marketing. This included redesigning the system for high throughput, high availability, and lower support costs</li>
 
-             <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, Linux, and FreeBSD.</li>
-            <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS.</li>
-             <li>Implemented SVN, ReviewBoard, Buildbot and VMWare to provide developers with a consistent and automated build environment.</li>
+             <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, Linux, and FreeBSD</li>
+            <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS</li>
+             <li>Implemented SVN, ReviewBoard, Buildbot and VMWare to provide developers with a consistent and automated build environment</li>
         </ul>
       </section>
     </section>
@@ -201,23 +205,72 @@ h6 {
         <h5>Georgia Department of Human Services <span class="muted">2002</span></h5>
 
         <ul>
-            <li>Created a custom calendaring solution using PHP for intenal use, replacing GroupWise.</li> 
-            <li>Maintained Novell NetWare and GroupWise servers.</li>
-            <li>Worked as a dispatcher, deploying technicians for remote service.</li>
+            <li>Created a custom calendaring solution using PHP for intenal use, replacing GroupWise</li> 
+            <li>Maintained Novell NetWare and GroupWise servers</li>
+            <li>Worked as a dispatcher, deploying technicians for remote service</li>
         </ul>
       </section>
     </section>
+
+    <section class="project">
+      <section class="details">
+        <h4>Senior Network Administrator</h4>
+        <h5>Internet Commerce Corporation <span class="muted">1997-2001</span></h5>
+        <ul>
+          <li>Designed and built fully redundant datacenter for EDI VAN service. This involved designing the requirements, budgeting, layout, power, and networking</li>
+          <li>Implemented fully dynamic networking mesh, reconfigurable by others via custom PHP web interface, backed by a revision control system</li>
+        </ul>
+      </section>
+    </section>
+  </section>
+
+
   </section>
 
   <section id="projects">
     <section class="project">
       <h3>Projects</h3>
       <section class="details">
-        <h4>Flyswatter (http://code.google.com/p/flyswatter/)</h4>
-        <h5>C++, PHP <span class="muted">(Windows)</span></h5>
+      <h4>Flyswatter (<a href="http://flyswatter.googlecode.com">http://flyswatter.googlecode.com</a>)</h4>
+        <h5>C++, PHP</h5>
         <ul>
             <li>Crash reporter library for Windows</li>
-            <li>Includes web interface which uses the Breakpad symbol processor.</li>
+            <li>Includes web interface which uses the Breakpad symbol processor</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>DGS (<a href="http://dgs.googlecode.com">http://dgs.googlecode.com</a>)</h4>
+        <h5>Java <span class="muted">(J2EE)</span></h5>
+        <ul>
+          <li>Image compositing server, supporting SVG templates</li>
+          <li>Open-source replacement for Adobe ???</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>NMEAParser (<a href="http://nmeaparser.googlecode.com">http://nmeaparser.googlecode.com</a>)</h4>
+        <h5>C#</h5>
+        <ul>
+          <li>Object oriented library for reading GPS data (NMEA 0813)</li>
+          <li>Supports reading from serial port or networked GPS units.</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>Fisherman's Friend</h4>
+        <h5>Who knows?</h5>
+        <ul>
+          <li>Log viewer and moving map for Lowrance networked sonar units</li>
+          <li>Capable of creating high detail lake bottom maps through historical analysis.</li>
+          <li>Able to determine fishing "hot spots" and detect man-made submerged objects.</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>Mega Rice Fever</h4>
+        <h5>C# <span class="muted">(Arduino, .NET, .NET Compact Framework)</h5>
+        <ul>
+          <li>Digital dashboard for cars and boats</li>
+          <li>Customizable UI with support for themes.</li>
+          <li>Uses built-in vehicle diagnostics port to gather data from cars and trucks</li>
+          <li>Uses custom Arduino sensor modules to gather data for boats</li>
         </ul>
       </section>
     </section>
