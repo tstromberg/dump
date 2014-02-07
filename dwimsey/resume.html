@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background: #c1c1c1;
+  color: #808080;
+  font: 12px Arial,sans-serif;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+#wrap {
+  width: 760px;
+  padding: 80px 80px 60px 80px;
+  margin: 80px auto;
+  background-color: #fff;
+  -webkit-box-shadow: 2px 2px 1px #808080;
+  box-shadow: 2px 2px 1px #808080;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444;
+  font-family: 'Open Sans',Arial,sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 28px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: #E45C3F;
+}
+
+header h2 {
+  font-weight: 300;
+  font-size: 14px;
+  color: #444;
+}
+
+
+header #name {
+  text-transform: uppercase;
+  width: 370px;
+  margin-left: 20px;
+  float: left;
+}
+
+header #geo {
+  width: 175px;
+  float: left;
+  padding-right: 20px;
+  border-right: 1px solid #efefef;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+header #virtual {
+  width: 175px;
+  margin-left: 20px;
+  float: left;
+}
+
+h3 {
+  margin-left: 125px;
+  color: #E45C3F;
+  font-size: 18px;
+}
+
+/* job title */
+h4 {
+  line-height: 22px;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* job name */
+xxxh5 {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 24px;
+  text-transform: uppercase;
+  background-color: #f5f5f5;
+  padding: 0 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+/* job years */
+h6 {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  color: #aaa;
+  text-align: right;
+  margin: 0;
+}
+
+#blurb {
+  clear: both;
+  color: #444;
+  font-family: 'Open Sans',Arial,sans-serif;
+  margin: 40px 0 40px 0;
+  padding: 40px 0;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  color: #444;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.project {
+  clear: both;
+}
+
+.project_meta {
+  width: 125px;
+  float: left;
+}
+
+.details {
+  margin-left: 20px;
+  float: left;
+  width: 565px;
+}
+</style>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css' />
+  <title>David Wimsey: Resume</title>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <section id="name">
+      <h1>David Wimsey</h1>
+      <h2>Software Engineer</h2>
+    </section>
+    <section id="contact">
+      <section id="geo">
+        <address>1835 Tarbert Drive,<br />Cary, North Carolina<br />USA</address>
+      </section>
+      <section id="virtual">
+        <address>david@wimsey.us</br />http://wimsey.us/<br />+1-919-657-0505</address>
+      </section>
+    </section>
+  </header>
+
+  <section id="blurb">
+        Specializing in complex systems and cross-platform development.
+  </section>
+
+  <section id="experience">
+    <h3>Working Experience</h3>
+    <section class="project">
+      <section class="project_meta">
+
+         <h6>2004 - 2014</h6>
+      </section>
+  
+      <section class="details">
+        <h4>Chief Technology Officer</h4>
+         <h5>Research Triangle Software</h5>
+
+        <ul>
+            <li>Worked on <a href="http://www.lettermark.com/">LetterMark</a>,
+                a SaaS for branded e-mail marketing. This included redesigning the system for high throughput, high availability, and lower support costs.</li>
+            <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS.</li>
+             <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, Linux, and FreeBSD.</li>
+             <li>Implemented SVN, ReviewBoard, Buildbot and VMWare to provide developers with a consistent and automated build environment.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="project">
+      <section class="project_meta">
+
+         <h6>2002</h6>
+      </section>
+      <section class="details">
+        <h4>Desktop Support Technician</h4>
+         <h5>Georgia Department of Human Services</h5>
+
+        <ul>
+            <li>Created a custom calendaring solution using PHP for intenal use, replacing GroupWise.</li> 
+            <li>Maintained Novell NetWare and GroupWise servers.</li>
+            <li>Worked as a dispatcher, deploying technicians for remote service.</li>
+        </ul>
+      </section>
+    </section>
+  </section>
+
+  <section id="projects">
+    <section class="project">
+      <h3>Projects</h3>
+      <section class="project_meta">
+
+         <h6>Windows</h6>
+      </section>
+  
+      <section class="details">
+        <h4>Flyswatter (http://code.google.com/p/flyswatter/)</h4>
+         <h5>C++, PHP</h5>
+        <ul>
+            <li>Crash reporter library for Windows</li>
+            <li>Includes web interface which uses the Breakpad symbol processor.</li>
+        </ul>
+      </section>
+    </section>
+  </section>
+
+  <section id="skills">
+    <h3>Related Skills</h3>
+
+    <h4>Programming Languages</h4>
+    <p>C/C++, C#, Objective-C, Java, Visual Basic, Ruby, Perl, and Python</p>
+
+    <h4>Operating Systems</h4>
+    <p>Windows, Mac OS X, iOS, FreeBSD, Linux, Solaris</h4>
+
+    <h4>Databases</h4>
+    <p>PostgreSQL, MySQL, OpenLDAP, Oracle</p>
+
+    <h4>Misc</h4>
+    <p>Experience with Subversion, CVS, ReviewBoard, Buildbot, Bash, Visual Studio, etc.</p>
+  </section>
+
+</div>
+</body>
+</html>
+
+
