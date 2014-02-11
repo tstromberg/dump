@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <style>
-
-
 body {
   background: #c1c1c1;
   color: #808080;
@@ -21,6 +20,7 @@ body {
   -webkit-box-shadow: 2px 2px 1px #808080;
   box-shadow: 2px 2px 1px #808080;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   color: #444;
@@ -47,13 +47,17 @@ header h2 {
 
 header #name {
   text-transform: uppercase;
-  width: 355px;
   margin-left: 20px;
   float: left;
+  clear: right;
+}
+
+header #contact {
+    float: right;
 }
 
 header #geo {
-  width: 175px;
+  width: 10em;
   float: left;
   padding-right: 20px;
   border-right: 1px solid #efefef;
@@ -62,7 +66,7 @@ header #geo {
 }
 
 header #virtual {
-  width: 150px;
+  width: 11em;
   margin-left: 20px;
   float: left;
 }
@@ -122,8 +126,6 @@ h5 {
   font-weight: 300;
   font-size: 1.4em;
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: 100px;
 }
 
 .project {
@@ -151,6 +153,66 @@ h5 {
 a, a:visited {
   color: #346699;
 }
+
+/* overrides which make this print better. ideally, this should be empty! */
+@media screen,print {
+    body {
+        margin: 0;
+        color: #000;
+        padding: 0;
+        font-size: 90%;
+        background-color: #fff;
+    }
+    #wrap {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: 2px 2px 1px #fff;
+        -webkit-box-shadow: 2px 2px 1px #fff;
+    }
+    .details {
+      margin-left: 1.2em;
+    }
+    #blurb {
+      padding: 0.75em 0;
+      font-size: 1.2em;
+    }
+    #contact {
+        font-size: 12px;
+        line-height: 1.6em;
+    }
+    .project {
+      padding-bottom: 0.2em;
+    }
+    h3 {
+        margin-top: 0.25em;
+    }
+    h4 {
+     font-size: 1.15em;
+    }
+
+    /* recoloring rules (grey->black). Remove if you have a good color printer. */
+    h5 {
+        color: #000;
+    }
+    #projects h5 {
+       font-weight: normal;
+    }
+    #skills p {
+        color: #000;
+    }
+    #muted {
+        color: #000;
+    }
+
+    /* Bad hack: enforces the location of a printed page break. */
+    /* This can probably be removed, as it will be a pain to maintain. */
+    #flyswatter {
+      page-break-after: always;
+    }
+}
+
+
   </style>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css" />
   <title>David Wimsey: Resume</title>
@@ -167,7 +229,7 @@ a, a:visited {
         <address>1835 Tarbert Drive,<br />Cary, North Carolina<br />USA</address>
       </section>
       <section id="virtual">
-      <address>david@wimsey.us</br /><a href="http://david.wimsey.us/">http://david.wimsey.us/</a><br /><strong>+1-919-657-0505</strong></address>
+      <address>david@wimsey.us<br><a href="http://david.wimsey.us/">http://david.wimsey.us/</a><br><strong>+1-919-657-0505</strong></address>
       </section>
     </section>
   </header>
@@ -188,9 +250,9 @@ a, a:visited {
             <li>Worked on <a href="http://www.lettermark.com/">LetterMark</a>,
                 a SaaS for branded e-mail marketing. This included redesigning the system for high throughput, high availability, and lower support costs</li>
 
-             <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, Linux, and FreeBSD</li>
+             <li>Worked on <a href="http://www.rtsz.com/products/cryptolock/">CryptoLock</a> personal encryption software for Windows, Mac OS X, and Linux.</li>
             <li>Created <a href="http://www.rtsz.com/products/CameraTimerDC/index.html">Camera TimerDC</a>, a camera timer app for iOS</li>
-             <li>Implemented SVN, ReviewBoard, Buildbot and VMWare to provide developers with a consistent and automated build environment</li>
+             <li>Implemented custom build system using Subversion, ReviewBoard, Buildbot and VMWare.</li>
         </ul>
       </section>
     </section>
@@ -203,7 +265,7 @@ a, a:visited {
         <ul>
             <li>Created a custom calendaring solution using PHP for intenal use, replacing GroupWise</li> 
             <li>Maintained Novell NetWare and GroupWise servers</li>
-            <li>Worked as a dispatcher, deploying technicians for remote service</li>
+            <li>Acted as a dispatcher, overseeing technicians at remote sites</li>
         </ul>
       </section>
     </section>
@@ -213,19 +275,17 @@ a, a:visited {
         <h4>Senior Network Administrator</h4>
         <h5>Internet Commerce Corporation <span class="muted">1997-2001</span></h5>
         <ul>
-          <li>Designed and built fully redundant datacenter for EDI VAN service. This involved designing the requirements, budgeting, layout, power, and networking</li>
-          <li>Implemented fully dynamic networking mesh, reconfigurable by others via custom PHP web interface, backed by a revision control system</li>
+          <li>Designed and built fully redundant datacenter. This involved requirements gathering, budgeting, layout, power, and networking</li>
+          <li>Implemented fully dynamic networking mesh, reconfigurable via custom PHP web interface, backed by a revision control system</li>
+          <li>Wrote other really cool software!</li>
         </ul>
       </section>
     </section>
   </section>
 
-
-  </section>
-
   <section id="projects">
-    <section class="project">
-      <h3>Projects</h3>
+    <h3>Projects</h3>
+    <section class="project" id="flyswatter">
       <section class="details">
       <h4>Flyswatter (<a href="http://flyswatter.googlecode.com">http://flyswatter.googlecode.com</a>)</h4>
         <h5>C++, PHP</h5>
@@ -234,6 +294,8 @@ a, a:visited {
             <li>Includes web interface which uses the Breakpad symbol processor</li>
         </ul>
       </section>
+    </section>
+    <section class="project" id="dgs">
       <section class="details">
         <h4>DGS (<a href="http://dgs.googlecode.com">http://dgs.googlecode.com</a>)</h4>
         <h5>Java <span class="muted">(J2EE)</span></h5>
@@ -242,6 +304,8 @@ a, a:visited {
           <li>Open-source replacement for Adobe ???</li>
         </ul>
       </section>
+    </section>
+    <section class="project" id="nmeaparser">
       <section class="details">
         <h4>NMEAParser (<a href="http://nmeaparser.googlecode.com">http://nmeaparser.googlecode.com</a>)</h4>
         <h5>C#</h5>
@@ -250,21 +314,22 @@ a, a:visited {
           <li>Supports reading from serial port or networked GPS units.</li>
         </ul>
       </section>
+    </section>
+    <section class="project" id="fisher">
       <section class="details">
         <h4>Fisherman's Friend</h4>
         <h5>Who knows?</h5>
         <ul>
           <li>Log viewer and moving map for Lowrance networked sonar units</li>
-          <li>Capable of creating high detail lake bottom maps through historical analysis.</li>
-          <li>Able to determine fishing "hot spots" and detect man-made submerged objects.</li>
+          <li>Synthesizes high detail lake bottom maps through historical analysis.</li>
+          <li>Detects fishing "hot spots" and submerged objects.</li>
         </ul>
       </section>
       <section class="details">
-        <h4>Mega Rice Fever</h4>
-        <h5>C# <span class="muted">(Arduino, .NET, .NET Compact Framework)</h5>
+        <h4>Rice Rice Baby!</h4>
+        <h5>C# <span class="muted">(Arduino, .NET, .NET Compact Framework)</span></h5>
         <ul>
-          <li>Digital dashboard for cars and boats</li>
-          <li>Customizable UI with support for themes.</li>
+          <li>Themeable Digital dashboard for cars and boats</li>
           <li>Uses built-in vehicle diagnostics port to gather data from cars and trucks</li>
           <li>Uses custom Arduino sensor modules to gather data for boats</li>
         </ul>
