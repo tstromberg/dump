@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <style>
+   
 body {
   background: #c1c1c1;
   color: #808080;
@@ -167,8 +168,11 @@ a, a:visited {
         width: 100%;
         margin: 0;
         padding: 0;
-        box-shadow: 2px 2px 1px #fff;
-        -webkit-box-shadow: 2px 2px 1px #fff;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    header #name {
+      margin-left: 10px;
     }
     .details {
       margin-left: 1.2em;
@@ -178,31 +182,31 @@ a, a:visited {
       font-size: 1.2em;
     }
     #contact {
-        font-size: 12px;
-        line-height: 1.6em;
+      font-size: 12px;
+      line-height: 1.6em;
     }
     .project {
       padding-bottom: 0.2em;
     }
     h3 {
-        margin-top: 0.25em;
+      margin-top: 0.25em;
     }
     h4 {
-     font-size: 1.15em;
+      font-size: 1.15em;
     }
 
     /* recoloring rules (grey->black). Remove if you have a good color printer. */
     h5 {
-        color: #000;
+      color: #000;
     }
     #projects h5 {
-       font-weight: normal;
+      font-weight: normal;
     }
     #skills p {
-        color: #000;
+      color: #000;
     }
     #muted {
-        color: #000;
+      color: #000;
     }
 
     /* Bad hack: enforces the location of a printed page break. */
@@ -211,8 +215,6 @@ a, a:visited {
       page-break-after: always;
     }
 }
-
-
   </style>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css" />
   <title>David Wimsey: Resume</title>
