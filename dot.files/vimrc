@@ -31,7 +31,8 @@ set showcmd              " Show (partial) command in status line.
 set showmatch            " Show matching brackets.
 set showmode
 set smartindent
-set softtabstop=2
+set softtabstop=2        " How many spaces to insert if you hit tab.
+set tabstop=2            " Viewing a real tab uses two columns.
 set undolevels=200
 set wildmenu wildmode=longest:full
 
@@ -91,6 +92,8 @@ syntax on
 let g:syntastic_python_checker_args = '--max-line-length=80 --max-complexity=9'
 call pathogen#infect()
 
+" Don't hide useful syntax highlighting when editing JSON.
+let g:vim_json_syntax_conceal = 0
 
 " bastards be resetting things.
 highlight ExtraWhitespace ctermbg=red guibg=red
