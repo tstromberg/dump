@@ -9,8 +9,9 @@ MY_NAME = 'Thomas R Stromberg'
 
 for row in csv.DictReader(open(sys.argv[1])):
   amount = float(row['Gift Amount'].replace('$', ''))
-  d[row['Recognition Name']].append(amount)
+  name = '%s %s (%s)' % (row['First Name'], row['Last Name'], row['Email'])
+  d[name].append(amount)
 
-for donor, _ in sorted(d.iteritems(), key=lambda x: sum(x[1]), reverse=True):
+for donor, amount in sorted(d.iteritems(), key=lambda x: sum(x[1]), reverse=True):
   if MY_NAME not in donor:
-    print '<li>%s</li>' % donor
+    print '"%s",%s' % (donor,sum(amount))

@@ -75,7 +75,7 @@ done
 # Good paths to add if we see them.
 add_bin_paths="
   /usr/local/bin /usr/local/sbin /usr/sbin /sbin $add_bin_paths
-  /usr/local/go/bin /usr/local/google_appengine
+  /usr/local/go/bin /usr/local/google_appengine /usr/local/go_appengine
   $HOME/bin
 "
 add_man_paths="/usr/share/man /usr/local/share/man $add_man_paths"

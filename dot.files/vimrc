@@ -1,15 +1,5 @@
-" This needs to come before any syntax statements.
-if filereadable("/usr/local/go/misc/vim/readme.txt")
-  " See http://golang.org/misc/vim/readme.txt
-  set rtp+=/usr/local/go/misc/vim
-  filetype plugin indent on
-  " Re-format .go files when saving. This uses ftplugin/go/fmt.vim
-  autocmd BufWritePost *.go :Fmt
-endif
-
-
 " Go loves tabs. I don't.
-autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+"autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 set autoindent
 set autochdir            " set working directory to match the current file
@@ -38,8 +28,6 @@ set wildmenu wildmode=longest:full
 
 " save precious keystrokes
 nnoremap ; :
-
-nmap <silent> <C-D> :NERDTreeToggle<CR>
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null
@@ -87,10 +75,6 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 syntax on
-
-" useful for syntastic
-let g:syntastic_python_checker_args = '--max-line-length=80 --max-complexity=9'
-call pathogen#infect()
 
 " Don't hide useful syntax highlighting when editing JSON.
 let g:vim_json_syntax_conceal = 0

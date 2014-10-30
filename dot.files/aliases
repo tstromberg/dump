@@ -3,6 +3,7 @@
 alias mkdir='mkdir -p'
 alias 'hogs'='du -kx . | sort -rn | more'
 alias 'hitlist'='find . -name "*core" -o \( -atime +120 -a -mtime +120 -a -size +250 \) -exec ls -lad {} \;'
+alias 'bigrpm'='rpm -qa --queryformat "%{name}-%{version}-%{release} %{size}\n" | sort -n -k 2n'
 
 # overwrite some commands 
 if [ -x /usr/bin/killall -a ! -x /usr/bin/pkill ]; then
