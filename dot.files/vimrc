@@ -1,11 +1,8 @@
-" Go loves tabs. I don't.
-"autocmd FileType go setlocal nolist noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-
-set autoindent
+" General settings. ---------------------------------------------------------->
 set autochdir            " set working directory to match the current file
 set backup
 set backupdir=~/.vim/backup
-set expandtab            " To insert space characters whenever the tab key is pressed
+set expandtab            " To insert space characters whenever <tab> is pressed
 set hidden
 set history=200          " Store last 200 commands as history.
 set hlsearch             " Highlight previous search results
@@ -13,7 +10,7 @@ set incsearch            " Incremental search
 set laststatus=2         " enable the status bar
 set list                 " highlight whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
-set nocompatible
+set nocompatible              " be iMproved, required
 set pastetoggle=<F2>     " hit this on insert when pasting code in
 set ruler                " show the line number on the bar
 set shiftwidth=2         " number of space characters inserted for indentation
@@ -26,28 +23,32 @@ set tabstop=2            " Viewing a real tab uses two columns.
 set undolevels=200
 set wildmenu wildmode=longest:full
 
-" save precious keystrokes
-nnoremap ; :
+" Vundle " ------------------------------------------------------------------->
+" https://github.com/gmarik/Vundle.vim
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+" Other Plugins go here.
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
 
-" sudo
-cmap w!! w !sudo tee % >/dev/null
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-" auto-reload changes to .vimrc
-au! BufWritePost .vimrc source %
 
-" presentation
+" Key/Command mappings ------------------------------------------------------->
+nnoremap ; :                          " save precious keystrokes
+cmap w!! w !sudo tee % >/dev/null     " double exclamations to use sudo
+
+
+" UI ------------------------------------------------------------------------->
 set background=dark
 set guifont=Inconsolata
-
-" This assumes a 256-color terminal. If you don't have one, get one.
 colorscheme pablo
 set t_Co=256
-
-if has("colorcolumn")
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('Comment', '\%>80v.\+', -1)
-endif
 
 " hate whitespace: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -57,7 +58,15 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" automatically strip trailing whitespace from these file formats
+" Don't hide useful syntax highlighting when editing JSON.
+let g:vim_json_syntax_conceal = 0
+
+
+" Pre/Post-Write Bindings ---------------------------------------------------->
+" auto-reload changes to .vimrc
+au! BufWritePost .vimrc source %
+
+" automatically strip trailing whitespace
 autocmd BufWritePost *.php :%s/\s\+$//e
 autocmd BufWritePost *.rules :%s/\s\+$//e
 autocmd BufWritePost *.rb :%s/\s\+$//e
@@ -68,16 +77,16 @@ autocmd BufWritePost *.yml :%s/\s\+$//e
 autocmd BufWritePost *.yaml :%s/\s\+$//e
 autocmd BufWritePost *.gcl :%s/\s\+$//e
 
+let g:go_fmt_command = "goimports"
 
-" Source a local configuration file if available.
+" Type-specific overrides ---------------------------------------------------->
+" For go, <tab>'s are great.
+autocmd FileType go setlocal noexpandtab nolist shiftwidth=4 tabstop=4 softtabstop=4
+
+
+" Import local settings ------------------------------------------------------>
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-syntax on
 
-" Don't hide useful syntax highlighting when editing JSON.
-let g:vim_json_syntax_conceal = 0
-
-" bastards be resetting things.
-highlight ExtraWhitespace ctermbg=red guibg=red
