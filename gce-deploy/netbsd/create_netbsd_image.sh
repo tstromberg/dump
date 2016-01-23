@@ -1,35 +1,88 @@
 #!/bin/bash
-# Copyright 2014 The Go Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style
-# license that can be found in the LICENSE file.
+#
+# Create a NetBSD image for GCE.
+#
+# Example use to build a NetBSD 7.0 image:
+#
+# ./create_netbsd_image.sh 7.0
 
-set -eux
+set -eux -o pipefail
 
-ANITA_VERSION=1.38
-ARCH=amd64
-RELEASE=7.0
+# NetBSD release version, such as "7.0"
+readonly NETBSD_VERSION=$1
 
-BUILD_TIMESTAMP=$(date +%Y-%m-%d-%H%M)
-BUILD_NAME="netbsd-${RELEASE}-${ARCH}-${BUILD_TIMESTAMP}-gce"
-WORK_DIR=${BUILD_NAME}
+# Size of disk to create
+readonly DISK_SIZE="4G"
 
-# Download and build anita (automated NetBSD installer).
-if ! [ -e anita-${ANITA_VERSION}.tar.gz ]; then
-  curl -vO http://www.gson.org/netbsd/anita/download/anita-${ANITA_VERSION}.tar.gz
-fi
+# Anita, automated NetBSD Installation tool: http://www.gson.org/netbsd/anita/
+readonly ANITA_URL="http://www.gson.org/netbsd/anita/download/anita-1.39.tar.gz"
 
-tar xfz anita-${ANITA_VERSION}.tar.gz
-cd anita-${ANITA_VERSION}
-python setup.py install --user
-cd ..
+# Architecture to build for.
+readonly ARCH=amd64
 
-python mkvm.py ${ARCH} ${RELEASE} ${WORK_DIR}
 
-reset
+# Run Anita.
+#
+# Args:
+#   - netbsd_version: version of NetBSD we are building.
+#   - work_dir: directory containing wd0.img file.
+#
+# Globals:
+#   - ARCH - NetBSD architecture to build for.
+#   - ANITA_URL - Path to Anita download.
+#   - DISK_SIZE - size of disk to build.
+function run_anita() {
+  local netbsd_version="$1"
+  local work_dir="$2"
 
-# GCE requires that the image be named disk.raw.
-mv ${WORK_DIR}/wd0.img ${WORK_DIR}/disk.raw
-echo "Archiving disk.raw (this may take a while)"
+  # Download and build anita (automated NetBSD installer)
+  local anita_tarball="$(basename ${ANITA_URL})"
+  local anita_dir=$(echo ${anita_tarball} | sed s/"\.tar\.gz"/""/)
 
-tar -C ${WORK_DIR} -Szcf ${BUILD_NAME}.tar.gz disk.raw
-echo "Done. GCE image is ${BUILD_NAME}.tar.gz."
+  if [[ ! -e "${anita_dir}" ]]; then
+    curl -vO "${ANITA_URL}" && tar xfz "${anita_tarball}"
+    cd "${anita_dir}" && python setup.py install --user
+    cd ..
+  fi
+
+  # Verify QEMU install
+  qemu-system-x86_64 --version \
+    || ( echo "QEMU must be installed in PATH."; return 2; )
+
+  # Make the VM.
+  python mkvm.py "${ARCH}" "${netbsd_version}" "${work_dir}" "${DISK_SIZE}" \
+    || ( echo "Failed to build ${netbsd_version}"; return 3; )
+
+  # Sometimes the display gets corrupt.
+  reset
+
+  echo "Successfully built NetBSD ${netbsd_version} image in ${work_dir}!"
+}
+
+# Archive the image created by Anita.
+#
+# Args:
+#   - netbsd_version: version of NetBSD we are building.
+#   - work_dir: directory containing wd0.img file.
+function archive_image() {
+  local netbsd_version="$1"
+  local work_dir="$2"
+
+  # The name of the image to build.
+  local image_name="netbsd-${netbsd_version}-$(date +%Y-%m-%d-%H%M)"
+
+  # GCE requires that the image be named disk.raw.
+  mv ${work_dir}/wd0.img ${work_dir}/disk.raw
+
+  tar -C ${work_dir} -Szcf ${image_name}.tar.gz disk.raw
+  echo "Done. GCE image is ${image_name}.tar.gz."
+}
+
+
+# Main program flow.
+# The name of our temporary directory to work in.
+work_dir="${TMPDIR}/NetBSD-${NETBSD_VERSION}-${ARCH}"
+
+run_anita "${NETBSD_VERSION}" "${work_dir}"
+archive_image "${NETBSD_VERSION}" "${work_dir}"
+
